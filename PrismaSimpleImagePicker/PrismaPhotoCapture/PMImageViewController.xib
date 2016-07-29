@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PMImageViewController" customModule="PrismaSimpleImagePicker" customModuleProvider="target">
+            <connections>
+                <outlet property="albumCollection" destination="9no-OB-PFq" id="TgN-DR-SdU"/>
+                <outlet property="dsiplayHeader" destination="J0S-ro-rV2" id="mkw-nK-5A7"/>
+                <outlet property="headerTopConstraints" destination="UQW-3o-w8i" id="zxx-Rr-xl4"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="556"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J0S-ro-rV2" customClass="PMPhotoHeaderView" customModule="PrismaSimpleImagePicker" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="J0S-ro-rV2" secondAttribute="height" multiplier="1:1" id="OM8-nG-Iqa"/>
+                    </constraints>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="OM8-nG-Iqa"/>
+                        </mask>
+                    </variation>
+                    <variation key="widthClass=compact">
+                        <mask key="constraints">
+                            <include reference="OM8-nG-Iqa"/>
+                        </mask>
+                    </variation>
+                </view>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="9no-OB-PFq">
+                    <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="1" minimumInteritemSpacing="1" id="3em-x8-kow">
+                        <size key="itemSize" width="50" height="50"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="X71-Y3-2Hi"/>
+                        <outlet property="delegate" destination="-1" id="901-HR-A77"/>
+                    </connections>
+                </collectionView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="9no-OB-PFq" secondAttribute="bottom" id="0Gc-ha-0cM"/>
+                <constraint firstAttribute="trailing" secondItem="J0S-ro-rV2" secondAttribute="trailing" id="4zj-Nd-aqS"/>
+                <constraint firstItem="J0S-ro-rV2" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="A9c-Nr-lQQ"/>
+                <constraint firstItem="9no-OB-PFq" firstAttribute="top" secondItem="J0S-ro-rV2" secondAttribute="bottom" constant="8" id="FB1-TA-eJM">
+                    <variation key="widthClass=compact" constant="1"/>
+                </constraint>
+                <constraint firstItem="J0S-ro-rV2" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="UQW-3o-w8i"/>
+                <constraint firstItem="9no-OB-PFq" firstAttribute="width" secondItem="J0S-ro-rV2" secondAttribute="width" id="ZOu-rg-WbJ"/>
+                <constraint firstItem="9no-OB-PFq" firstAttribute="centerX" secondItem="J0S-ro-rV2" secondAttribute="centerX" id="boU-Mp-BCD"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
+            <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
+            <variation key="default">
+                <mask key="subviews">
+                    <exclude reference="J0S-ro-rV2"/>
+                    <exclude reference="9no-OB-PFq"/>
+                </mask>
+                <mask key="constraints">
+                    <exclude reference="0Gc-ha-0cM"/>
+                    <exclude reference="FB1-TA-eJM"/>
+                    <exclude reference="ZOu-rg-WbJ"/>
+                    <exclude reference="boU-Mp-BCD"/>
+                    <exclude reference="4zj-Nd-aqS"/>
+                    <exclude reference="A9c-Nr-lQQ"/>
+                    <exclude reference="UQW-3o-w8i"/>
+                </mask>
+            </variation>
+            <variation key="widthClass=compact">
+                <mask key="subviews">
+                    <include reference="J0S-ro-rV2"/>
+                    <include reference="9no-OB-PFq"/>
+                </mask>
+                <mask key="constraints">
+                    <include reference="0Gc-ha-0cM"/>
+                    <include reference="FB1-TA-eJM"/>
+                    <include reference="ZOu-rg-WbJ"/>
+                    <include reference="boU-Mp-BCD"/>
+                    <include reference="4zj-Nd-aqS"/>
+                    <include reference="A9c-Nr-lQQ"/>
+                    <include reference="UQW-3o-w8i"/>
+                </mask>
+            </variation>
+        </view>
+    </objects>
+</document>
