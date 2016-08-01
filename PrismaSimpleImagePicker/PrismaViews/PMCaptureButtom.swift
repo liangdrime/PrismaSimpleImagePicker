@@ -8,6 +8,34 @@
 
 import UIKit
 
+let touchUpDuration = 0.4
+
+class PMTarget: NSObject {
+    var target: AnyObject?
+    var action: Selector?
+    var touchAction: Selector = #selector(PMTarget.touch(_:))
+    
+    override init() {
+        super.init()
+    }
+    
+    convenience init(target: AnyObject, action: Selector) {
+        self.init()
+        self.target = target
+        self.action = action
+    }
+    
+    func touch(sender: UIButton) {
+        let time = dispatch_time(DISPATCH_TIME_NOW, Int64(touchUpDuration * Double(NSEC_PER_SEC)))
+        dispatch_after(time, dispatch_get_main_queue()) {
+            if let target = self.target as? NSObject{
+                target.performSelector(self.action!, withObject: sender)
+            }
+        }
+    }
+}
+
+
 class PMCaptureButton: UIButton {
     
     var lineWidth: CGFloat = 1
@@ -16,6 +44,9 @@ class PMCaptureButton: UIButton {
     var enabledColor: UIColor = UIColor.init(white: 0.98, alpha: 0.75)
     let content = PMCaptureButtonContent.init()
     var shouldLayout = true
+    var targets: [AnyObject] = [AnyObject]()
+    
+    
     override var enabled: Bool {
         didSet {
             content.enabled = enabled
@@ -34,7 +65,7 @@ class PMCaptureButton: UIButton {
         backgroundColor = UIColor.clearColor()
         configViews()
     }
-
+    
     func configViews() {
         content.backgroundColor = UIColor.clearColor()
         content.frame = bounds
@@ -46,7 +77,7 @@ class PMCaptureButton: UIButton {
         addSubview(content)
         
         addTarget(self, action: #selector(PMCaptureButton.touchDown), forControlEvents: UIControlEvents.TouchDown)
-        addTarget(self, action: #selector(PMCaptureButton.touchUpInside), forControlEvents: UIControlEvents.TouchUpInside)
+        super.addTarget(self, action: #selector(PMCaptureButton.touchUpInside), forControlEvents: UIControlEvents.TouchUpInside)
         addTarget(self, action: #selector(PMCaptureButton.touchDragExit), forControlEvents: UIControlEvents.TouchDragExit)
         addTarget(self, action: #selector(PMCaptureButton.touchDragEnter), forControlEvents: UIControlEvents.TouchDragEnter)
     }
@@ -57,6 +88,19 @@ class PMCaptureButton: UIButton {
         }
         content.frame = bounds
     }
+    
+    override func addTarget(target: AnyObject?, action: Selector, forControlEvents controlEvents: UIControlEvents) {
+        if controlEvents == .TouchUpInside {
+            if let tar = target {
+                let pmTarget = PMTarget.init(target: tar, action: action)
+                super.addTarget(pmTarget, action: #selector(PMTarget.touch(_:)), forControlEvents: controlEvents)
+                targets.append(pmTarget) // retain ARC, also could associate `pmTarget` property to `target`, and write an extension of NSObject to add a dealloc call back metohod(remove the association).
+            }
+        }else {
+            super.addTarget(target, action: action, forControlEvents: controlEvents)
+        }
+    }
+    
     
     func touchDown() {
         setSelectedState(true)
@@ -84,7 +128,7 @@ class PMCaptureButton: UIButton {
             })
         }else {
             shouldLayout = false
-            UIView.animateWithDuration(0.4, delay: 0, options: UIViewAnimationOptions.CurveEaseInOut, animations: {
+            UIView.animateWithDuration(touchUpDuration, delay: 0, options: UIViewAnimationOptions.CurveEaseInOut, animations: {
                 self.content.transform = CGAffineTransformIdentity
                 }, completion: { (com: Bool) in
                     self.shouldLayout = true

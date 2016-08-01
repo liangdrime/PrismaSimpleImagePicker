@@ -7,38 +7,38 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7D1BA1011D4919BC0068032E /* PMCaptureButtom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D1BA1001D4919BC0068032E /* PMCaptureButtom.swift */; };
-		7D1EA4981D45C269007DE8E1 /* PMPhotoHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D1EA4971D45C269007DE8E1 /* PMPhotoHeaderView.swift */; };
-		7D1EA49A1D45C28E007DE8E1 /* PMPickerTitleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D1EA4991D45C28E007DE8E1 /* PMPickerTitleButton.swift */; };
-		7D1EA4A11D45D18A007DE8E1 /* PMImageGroupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D1EA49F1D45D18A007DE8E1 /* PMImageGroupController.swift */; };
-		7D1EA4A21D45D18A007DE8E1 /* PMImageGroupController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7D1EA4A01D45D18A007DE8E1 /* PMImageGroupController.xib */; };
-		7D1EA4A51D46186F007DE8E1 /* PMImageGroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D1EA4A31D46186F007DE8E1 /* PMImageGroupCell.swift */; };
-		7D1EA4A61D46186F007DE8E1 /* PMImageGroupCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7D1EA4A41D46186F007DE8E1 /* PMImageGroupCell.xib */; };
-		7D1EA4A81D461CCB007DE8E1 /* PMImageGroupModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D1EA4A71D461CCB007DE8E1 /* PMImageGroupModel.swift */; };
-		7D21B5541D4B88760059F999 /* PMImageProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D21B5531D4B88760059F999 /* PMImageProtocol.swift */; };
-		7D53D9C41D4F24AB00872658 /* PMStyleHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D53D9C31D4F24AB00872658 /* PMStyleHeaderView.swift */; };
-		7D53D9CC1D4F3BB800872658 /* PMStyleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D53D9CB1D4F3BB800872658 /* PMStyleCell.swift */; };
-		7D5497E71D47450500BEDBF8 /* PMPhotoHeaderItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D5497E61D47450500BEDBF8 /* PMPhotoHeaderItem.swift */; };
-		7D5497E91D47481500BEDBF8 /* PMPhotoGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D5497E81D47481500BEDBF8 /* PMPhotoGridView.swift */; };
+		7D53D9F01D4F4F6500872658 /* PMImageGroupController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7D53D9D01D4F4F6500872658 /* PMImageGroupController.xib */; };
+		7D53D9F11D4F4F6500872658 /* PMImagePickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D53D9D11D4F4F6500872658 /* PMImagePickerController.swift */; };
+		7D53D9F31D4F4F6500872658 /* PMImageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7D53D9D31D4F4F6500872658 /* PMImageViewController.xib */; };
+		7D53D9F41D4F4F6500872658 /* FMDeviceOrientation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D53D9D51D4F4F6500872658 /* FMDeviceOrientation.swift */; };
+		7D53D9F51D4F4F6500872658 /* PMImageManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D53D9D61D4F4F6500872658 /* PMImageManger.swift */; };
+		7D53D9F71D4F4F6500872658 /* PMImageGroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D53D9DA1D4F4F6500872658 /* PMImageGroupCell.swift */; };
+		7D53D9F81D4F4F6500872658 /* PMImageGroupCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7D53D9DB1D4F4F6500872658 /* PMImageGroupCell.xib */; };
+		7D53D9F91D4F4F6500872658 /* PMPhotoGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D53D9DC1D4F4F6500872658 /* PMPhotoGridView.swift */; };
+		7D53D9FA1D4F4F6500872658 /* PMPhotoHeaderItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D53D9DD1D4F4F6500872658 /* PMPhotoHeaderItem.swift */; };
+		7D53D9FB1D4F4F6500872658 /* PMPhotoHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D53D9DE1D4F4F6500872658 /* PMPhotoHeaderView.swift */; };
+		7D53D9FC1D4F4F6500872658 /* PMPickerTitleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D53D9DF1D4F4F6500872658 /* PMPickerTitleButton.swift */; };
+		7D53D9FD1D4F4F6500872658 /* PMImageEditController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D53D9E11D4F4F6500872658 /* PMImageEditController.swift */; };
+		7D53D9FF1D4F4F6500872658 /* PMImageProcessController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D53D9E31D4F4F6500872658 /* PMImageProcessController.swift */; };
+		7D53DA011D4F4F6500872658 /* PMImageProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D53D9E51D4F4F6500872658 /* PMImageProtocol.swift */; };
+		7D53DA021D4F4F6500872658 /* PMNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D53D9E61D4F4F6500872658 /* PMNavigationController.swift */; };
+		7D53DA031D4F4F6500872658 /* PMRootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D53D9E71D4F4F6500872658 /* PMRootViewController.swift */; };
+		7D53DA051D4F4F6500872658 /* PNImageCaptureController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D53D9E91D4F4F6500872658 /* PNImageCaptureController.swift */; };
+		7D53DA071D4F4F6500872658 /* PMCaptureButtom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D53D9EC1D4F4F6500872658 /* PMCaptureButtom.swift */; };
+		7D53DA081D4F4F6500872658 /* PMStyleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D53D9ED1D4F4F6500872658 /* PMStyleCell.swift */; };
+		7D53DA091D4F4F6500872658 /* PMStyleHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D53D9EE1D4F4F6500872658 /* PMStyleHeaderView.swift */; };
+		7D53DA0C1D4F507B00872658 /* PMGroupModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D53DA0B1D4F507B00872658 /* PMGroupModel.swift */; };
+		7D53DA0E1D4F50FC00872658 /* PMImageGroupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D53DA0D1D4F50FC00872658 /* PMImageGroupController.swift */; };
+		7D53DA101D4F511900872658 /* PMImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D53DA0F1D4F511900872658 /* PMImageViewController.swift */; };
 		7D56B5E21D449BA1009224A5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D56B5E11D449BA1009224A5 /* AppDelegate.swift */; };
 		7D56B5E41D449BA1009224A5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D56B5E31D449BA1009224A5 /* ViewController.swift */; };
 		7D56B5E71D449BA1009224A5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7D56B5E51D449BA1009224A5 /* Main.storyboard */; };
 		7D56B5E91D449BA1009224A5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7D56B5E81D449BA1009224A5 /* Assets.xcassets */; };
 		7D56B5F71D449BA1009224A5 /* PrismaSimpleImagePickerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D56B5F61D449BA1009224A5 /* PrismaSimpleImagePickerTests.swift */; };
-		7D56B6051D449BFF009224A5 /* PMImagePickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D56B6031D449BFF009224A5 /* PMImagePickerController.swift */; };
-		7D56B6081D44B4D4009224A5 /* PMImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D56B6071D44B4D4009224A5 /* PMImageViewController.swift */; };
-		7D56B60A1D44BFC6009224A5 /* PMNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D56B6091D44BFC6009224A5 /* PMNavigationController.swift */; };
-		7D56B60D1D44C000009224A5 /* PMRootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D56B60B1D44C000009224A5 /* PMRootViewController.swift */; };
-		7D56B6111D44C0C7009224A5 /* PNImageCaptureController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D56B60F1D44C0C7009224A5 /* PNImageCaptureController.swift */; };
-		7D56B6151D44C0DC009224A5 /* PMImageEditController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D56B6131D44C0DC009224A5 /* PMImageEditController.swift */; };
-		7D56B6191D44C148009224A5 /* PMImageProcessController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D56B6171D44C148009224A5 /* PMImageProcessController.swift */; };
-		7D56B61C1D44C908009224A5 /* PMImageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7D56B61B1D44C908009224A5 /* PMImageViewController.xib */; };
 		7D56B61F1D44E203009224A5 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D56B61E1D44E203009224A5 /* AVFoundation.framework */; };
 		7D56B6211D44E209009224A5 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D56B6201D44E209009224A5 /* AssetsLibrary.framework */; };
 		7D56B6231D450A42009224A5 /* Photos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D56B6221D450A42009224A5 /* Photos.framework */; };
-		7D605FD31D4AF2210053F93C /* PMImageManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D605FD21D4AF2210053F93C /* PMImageManger.swift */; };
 		7D605FDA1D4B21E20053F93C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7D605FD81D4B21E20053F93C /* LaunchScreen.storyboard */; };
-		7D605FDC1D4B2A400053F93C /* FMDeviceOrientation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D605FDB1D4B2A400053F93C /* FMDeviceOrientation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,19 +52,29 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		7D1BA1001D4919BC0068032E /* PMCaptureButtom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PMCaptureButtom.swift; sourceTree = "<group>"; };
-		7D1EA4971D45C269007DE8E1 /* PMPhotoHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PMPhotoHeaderView.swift; sourceTree = "<group>"; };
-		7D1EA4991D45C28E007DE8E1 /* PMPickerTitleButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PMPickerTitleButton.swift; sourceTree = "<group>"; };
-		7D1EA49F1D45D18A007DE8E1 /* PMImageGroupController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PMImageGroupController.swift; sourceTree = "<group>"; };
-		7D1EA4A01D45D18A007DE8E1 /* PMImageGroupController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PMImageGroupController.xib; sourceTree = "<group>"; };
-		7D1EA4A31D46186F007DE8E1 /* PMImageGroupCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PMImageGroupCell.swift; sourceTree = "<group>"; };
-		7D1EA4A41D46186F007DE8E1 /* PMImageGroupCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PMImageGroupCell.xib; sourceTree = "<group>"; };
-		7D1EA4A71D461CCB007DE8E1 /* PMImageGroupModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PMImageGroupModel.swift; sourceTree = "<group>"; };
-		7D21B5531D4B88760059F999 /* PMImageProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PMImageProtocol.swift; sourceTree = "<group>"; };
-		7D53D9C31D4F24AB00872658 /* PMStyleHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PMStyleHeaderView.swift; sourceTree = "<group>"; };
-		7D53D9CB1D4F3BB800872658 /* PMStyleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PMStyleCell.swift; sourceTree = "<group>"; };
-		7D5497E61D47450500BEDBF8 /* PMPhotoHeaderItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PMPhotoHeaderItem.swift; sourceTree = "<group>"; };
-		7D5497E81D47481500BEDBF8 /* PMPhotoGridView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PMPhotoGridView.swift; sourceTree = "<group>"; };
+		7D53D9D01D4F4F6500872658 /* PMImageGroupController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PMImageGroupController.xib; sourceTree = "<group>"; };
+		7D53D9D11D4F4F6500872658 /* PMImagePickerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PMImagePickerController.swift; sourceTree = "<group>"; };
+		7D53D9D31D4F4F6500872658 /* PMImageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PMImageViewController.xib; sourceTree = "<group>"; };
+		7D53D9D51D4F4F6500872658 /* FMDeviceOrientation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FMDeviceOrientation.swift; sourceTree = "<group>"; };
+		7D53D9D61D4F4F6500872658 /* PMImageManger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PMImageManger.swift; sourceTree = "<group>"; };
+		7D53D9DA1D4F4F6500872658 /* PMImageGroupCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PMImageGroupCell.swift; sourceTree = "<group>"; };
+		7D53D9DB1D4F4F6500872658 /* PMImageGroupCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PMImageGroupCell.xib; sourceTree = "<group>"; };
+		7D53D9DC1D4F4F6500872658 /* PMPhotoGridView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PMPhotoGridView.swift; sourceTree = "<group>"; };
+		7D53D9DD1D4F4F6500872658 /* PMPhotoHeaderItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PMPhotoHeaderItem.swift; sourceTree = "<group>"; };
+		7D53D9DE1D4F4F6500872658 /* PMPhotoHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PMPhotoHeaderView.swift; sourceTree = "<group>"; };
+		7D53D9DF1D4F4F6500872658 /* PMPickerTitleButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PMPickerTitleButton.swift; sourceTree = "<group>"; };
+		7D53D9E11D4F4F6500872658 /* PMImageEditController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PMImageEditController.swift; sourceTree = "<group>"; };
+		7D53D9E31D4F4F6500872658 /* PMImageProcessController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PMImageProcessController.swift; sourceTree = "<group>"; };
+		7D53D9E51D4F4F6500872658 /* PMImageProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PMImageProtocol.swift; sourceTree = "<group>"; };
+		7D53D9E61D4F4F6500872658 /* PMNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PMNavigationController.swift; sourceTree = "<group>"; };
+		7D53D9E71D4F4F6500872658 /* PMRootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PMRootViewController.swift; sourceTree = "<group>"; };
+		7D53D9E91D4F4F6500872658 /* PNImageCaptureController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PNImageCaptureController.swift; sourceTree = "<group>"; };
+		7D53D9EC1D4F4F6500872658 /* PMCaptureButtom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PMCaptureButtom.swift; sourceTree = "<group>"; };
+		7D53D9ED1D4F4F6500872658 /* PMStyleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PMStyleCell.swift; sourceTree = "<group>"; };
+		7D53D9EE1D4F4F6500872658 /* PMStyleHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PMStyleHeaderView.swift; sourceTree = "<group>"; };
+		7D53DA0B1D4F507B00872658 /* PMGroupModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PMGroupModel.swift; sourceTree = "<group>"; };
+		7D53DA0D1D4F50FC00872658 /* PMImageGroupController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PMImageGroupController.swift; sourceTree = "<group>"; };
+		7D53DA0F1D4F511900872658 /* PMImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PMImageViewController.swift; sourceTree = "<group>"; };
 		7D56B5DE1D449BA1009224A5 /* PrismaSimpleImagePicker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PrismaSimpleImagePicker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D56B5E11D449BA1009224A5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7D56B5E31D449BA1009224A5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -74,20 +84,10 @@
 		7D56B5F21D449BA1009224A5 /* PrismaSimpleImagePickerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PrismaSimpleImagePickerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D56B5F61D449BA1009224A5 /* PrismaSimpleImagePickerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrismaSimpleImagePickerTests.swift; sourceTree = "<group>"; };
 		7D56B5F81D449BA1009224A5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7D56B6031D449BFF009224A5 /* PMImagePickerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PMImagePickerController.swift; sourceTree = "<group>"; };
-		7D56B6071D44B4D4009224A5 /* PMImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PMImageViewController.swift; sourceTree = "<group>"; };
-		7D56B6091D44BFC6009224A5 /* PMNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PMNavigationController.swift; sourceTree = "<group>"; };
-		7D56B60B1D44C000009224A5 /* PMRootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PMRootViewController.swift; sourceTree = "<group>"; };
-		7D56B60F1D44C0C7009224A5 /* PNImageCaptureController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PNImageCaptureController.swift; sourceTree = "<group>"; };
-		7D56B6131D44C0DC009224A5 /* PMImageEditController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PMImageEditController.swift; sourceTree = "<group>"; };
-		7D56B6171D44C148009224A5 /* PMImageProcessController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PMImageProcessController.swift; sourceTree = "<group>"; };
-		7D56B61B1D44C908009224A5 /* PMImageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PMImageViewController.xib; sourceTree = "<group>"; };
 		7D56B61E1D44E203009224A5 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		7D56B6201D44E209009224A5 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		7D56B6221D450A42009224A5 /* Photos.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Photos.framework; path = System/Library/Frameworks/Photos.framework; sourceTree = SDKROOT; };
-		7D605FD21D4AF2210053F93C /* PMImageManger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PMImageManger.swift; sourceTree = "<group>"; };
 		7D605FD91D4B21E20053F93C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		7D605FDB1D4B2A400053F93C /* FMDeviceOrientation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FMDeviceOrientation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,15 +111,78 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		7D1EA4961D45C1F4007DE8E1 /* PrismaViews */ = {
+		7D53D9CD1D4F4F6500872658 /* PrismaImagePicker */ = {
 			isa = PBXGroup;
 			children = (
-				7D1EA4971D45C269007DE8E1 /* PMPhotoHeaderView.swift */,
-				7D5497E61D47450500BEDBF8 /* PMPhotoHeaderItem.swift */,
-				7D5497E81D47481500BEDBF8 /* PMPhotoGridView.swift */,
-				7D1BA1001D4919BC0068032E /* PMCaptureButtom.swift */,
-				7D53D9C31D4F24AB00872658 /* PMStyleHeaderView.swift */,
-				7D53D9CB1D4F3BB800872658 /* PMStyleCell.swift */,
+				7D53D9CE1D4F4F6500872658 /* PickerController */,
+				7D53D9D91D4F4F6500872658 /* PickerView */,
+				7D53D9D71D4F4F6500872658 /* PickerModel */,
+				7D53D9D41D4F4F6500872658 /* PickerHelper */,
+			);
+			path = PrismaImagePicker;
+			sourceTree = "<group>";
+		};
+		7D53D9CE1D4F4F6500872658 /* PickerController */ = {
+			isa = PBXGroup;
+			children = (
+				7D53D9D11D4F4F6500872658 /* PMImagePickerController.swift */,
+				7D53DA0F1D4F511900872658 /* PMImageViewController.swift */,
+				7D53D9D31D4F4F6500872658 /* PMImageViewController.xib */,
+				7D53DA0D1D4F50FC00872658 /* PMImageGroupController.swift */,
+				7D53D9D01D4F4F6500872658 /* PMImageGroupController.xib */,
+			);
+			path = PickerController;
+			sourceTree = "<group>";
+		};
+		7D53D9D41D4F4F6500872658 /* PickerHelper */ = {
+			isa = PBXGroup;
+			children = (
+				7D53D9D51D4F4F6500872658 /* FMDeviceOrientation.swift */,
+				7D53D9D61D4F4F6500872658 /* PMImageManger.swift */,
+			);
+			path = PickerHelper;
+			sourceTree = "<group>";
+		};
+		7D53D9D71D4F4F6500872658 /* PickerModel */ = {
+			isa = PBXGroup;
+			children = (
+				7D53DA0B1D4F507B00872658 /* PMGroupModel.swift */,
+			);
+			path = PickerModel;
+			sourceTree = "<group>";
+		};
+		7D53D9D91D4F4F6500872658 /* PickerView */ = {
+			isa = PBXGroup;
+			children = (
+				7D53D9DA1D4F4F6500872658 /* PMImageGroupCell.swift */,
+				7D53D9DB1D4F4F6500872658 /* PMImageGroupCell.xib */,
+				7D53D9DE1D4F4F6500872658 /* PMPhotoHeaderView.swift */,
+				7D53D9DD1D4F4F6500872658 /* PMPhotoHeaderItem.swift */,
+				7D53D9DC1D4F4F6500872658 /* PMPhotoGridView.swift */,
+				7D53D9DF1D4F4F6500872658 /* PMPickerTitleButton.swift */,
+			);
+			path = PickerView;
+			sourceTree = "<group>";
+		};
+		7D53D9E01D4F4F6500872658 /* PrismaPhotoCapture */ = {
+			isa = PBXGroup;
+			children = (
+				7D53D9E61D4F4F6500872658 /* PMNavigationController.swift */,
+				7D53D9E71D4F4F6500872658 /* PMRootViewController.swift */,
+				7D53D9E91D4F4F6500872658 /* PNImageCaptureController.swift */,
+				7D53D9E11D4F4F6500872658 /* PMImageEditController.swift */,
+				7D53D9E31D4F4F6500872658 /* PMImageProcessController.swift */,
+				7D53D9E51D4F4F6500872658 /* PMImageProtocol.swift */,
+			);
+			path = PrismaPhotoCapture;
+			sourceTree = "<group>";
+		};
+		7D53D9EB1D4F4F6500872658 /* PrismaViews */ = {
+			isa = PBXGroup;
+			children = (
+				7D53D9EC1D4F4F6500872658 /* PMCaptureButtom.swift */,
+				7D53D9ED1D4F4F6500872658 /* PMStyleCell.swift */,
+				7D53D9EE1D4F4F6500872658 /* PMStyleHeaderView.swift */,
 			);
 			path = PrismaViews;
 			sourceTree = "<group>";
@@ -146,9 +209,9 @@
 		7D56B5E01D449BA1009224A5 /* PrismaSimpleImagePicker */ = {
 			isa = PBXGroup;
 			children = (
-				7D56B6011D449BDD009224A5 /* PrismaImagePicker */,
-				7D56B6021D449BDD009224A5 /* PrismaPhotoCapture */,
-				7D1EA4961D45C1F4007DE8E1 /* PrismaViews */,
+				7D53D9E01D4F4F6500872658 /* PrismaPhotoCapture */,
+				7D53D9CD1D4F4F6500872658 /* PrismaImagePicker */,
+				7D53D9EB1D4F4F6500872658 /* PrismaViews */,
 				7D56B5E11D449BA1009224A5 /* AppDelegate.swift */,
 				7D56B5E31D449BA1009224A5 /* ViewController.swift */,
 				7D56B5E51D449BA1009224A5 /* Main.storyboard */,
@@ -166,37 +229,6 @@
 				7D56B5F81D449BA1009224A5 /* Info.plist */,
 			);
 			path = PrismaSimpleImagePickerTests;
-			sourceTree = "<group>";
-		};
-		7D56B6011D449BDD009224A5 /* PrismaImagePicker */ = {
-			isa = PBXGroup;
-			children = (
-				7D56B6091D44BFC6009224A5 /* PMNavigationController.swift */,
-				7D56B60B1D44C000009224A5 /* PMRootViewController.swift */,
-				7D56B60F1D44C0C7009224A5 /* PNImageCaptureController.swift */,
-				7D56B6131D44C0DC009224A5 /* PMImageEditController.swift */,
-				7D56B6171D44C148009224A5 /* PMImageProcessController.swift */,
-				7D21B5531D4B88760059F999 /* PMImageProtocol.swift */,
-			);
-			path = PrismaImagePicker;
-			sourceTree = "<group>";
-		};
-		7D56B6021D449BDD009224A5 /* PrismaPhotoCapture */ = {
-			isa = PBXGroup;
-			children = (
-				7D56B6031D449BFF009224A5 /* PMImagePickerController.swift */,
-				7D56B6071D44B4D4009224A5 /* PMImageViewController.swift */,
-				7D56B61B1D44C908009224A5 /* PMImageViewController.xib */,
-				7D1EA49F1D45D18A007DE8E1 /* PMImageGroupController.swift */,
-				7D1EA4A01D45D18A007DE8E1 /* PMImageGroupController.xib */,
-				7D1EA4A31D46186F007DE8E1 /* PMImageGroupCell.swift */,
-				7D1EA4A41D46186F007DE8E1 /* PMImageGroupCell.xib */,
-				7D1EA4991D45C28E007DE8E1 /* PMPickerTitleButton.swift */,
-				7D1EA4A71D461CCB007DE8E1 /* PMImageGroupModel.swift */,
-				7D605FD21D4AF2210053F93C /* PMImageManger.swift */,
-				7D605FDB1D4B2A400053F93C /* FMDeviceOrientation.swift */,
-			);
-			path = PrismaPhotoCapture;
 			sourceTree = "<group>";
 		};
 		7D56B61D1D44E1E5009224A5 /* Frameworks */ = {
@@ -290,11 +322,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7D1EA4A61D46186F007DE8E1 /* PMImageGroupCell.xib in Resources */,
-				7D56B61C1D44C908009224A5 /* PMImageViewController.xib in Resources */,
+				7D53D9F81D4F4F6500872658 /* PMImageGroupCell.xib in Resources */,
+				7D53D9F01D4F4F6500872658 /* PMImageGroupController.xib in Resources */,
+				7D53D9F31D4F4F6500872658 /* PMImageViewController.xib in Resources */,
 				7D56B5E91D449BA1009224A5 /* Assets.xcassets in Resources */,
 				7D605FDA1D4B21E20053F93C /* LaunchScreen.storyboard in Resources */,
-				7D1EA4A21D45D18A007DE8E1 /* PMImageGroupController.xib in Resources */,
 				7D56B5E71D449BA1009224A5 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -313,28 +345,28 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7D1EA4A81D461CCB007DE8E1 /* PMImageGroupModel.swift in Sources */,
-				7D605FDC1D4B2A400053F93C /* FMDeviceOrientation.swift in Sources */,
-				7D21B5541D4B88760059F999 /* PMImageProtocol.swift in Sources */,
-				7D56B6151D44C0DC009224A5 /* PMImageEditController.swift in Sources */,
-				7D53D9CC1D4F3BB800872658 /* PMStyleCell.swift in Sources */,
-				7D605FD31D4AF2210053F93C /* PMImageManger.swift in Sources */,
-				7D56B6051D449BFF009224A5 /* PMImagePickerController.swift in Sources */,
-				7D56B60D1D44C000009224A5 /* PMRootViewController.swift in Sources */,
-				7D1BA1011D4919BC0068032E /* PMCaptureButtom.swift in Sources */,
-				7D56B60A1D44BFC6009224A5 /* PMNavigationController.swift in Sources */,
-				7D56B6111D44C0C7009224A5 /* PNImageCaptureController.swift in Sources */,
-				7D56B6081D44B4D4009224A5 /* PMImageViewController.swift in Sources */,
+				7D53D9FD1D4F4F6500872658 /* PMImageEditController.swift in Sources */,
+				7D53DA101D4F511900872658 /* PMImageViewController.swift in Sources */,
+				7D53DA081D4F4F6500872658 /* PMStyleCell.swift in Sources */,
+				7D53DA031D4F4F6500872658 /* PMRootViewController.swift in Sources */,
+				7D53DA0C1D4F507B00872658 /* PMGroupModel.swift in Sources */,
+				7D53DA011D4F4F6500872658 /* PMImageProtocol.swift in Sources */,
+				7D53D9FB1D4F4F6500872658 /* PMPhotoHeaderView.swift in Sources */,
 				7D56B5E41D449BA1009224A5 /* ViewController.swift in Sources */,
-				7D1EA4A51D46186F007DE8E1 /* PMImageGroupCell.swift in Sources */,
-				7D56B6191D44C148009224A5 /* PMImageProcessController.swift in Sources */,
+				7D53D9F41D4F4F6500872658 /* FMDeviceOrientation.swift in Sources */,
+				7D53D9F71D4F4F6500872658 /* PMImageGroupCell.swift in Sources */,
+				7D53DA071D4F4F6500872658 /* PMCaptureButtom.swift in Sources */,
+				7D53D9F51D4F4F6500872658 /* PMImageManger.swift in Sources */,
+				7D53DA091D4F4F6500872658 /* PMStyleHeaderView.swift in Sources */,
+				7D53DA051D4F4F6500872658 /* PNImageCaptureController.swift in Sources */,
+				7D53D9F11D4F4F6500872658 /* PMImagePickerController.swift in Sources */,
 				7D56B5E21D449BA1009224A5 /* AppDelegate.swift in Sources */,
-				7D5497E71D47450500BEDBF8 /* PMPhotoHeaderItem.swift in Sources */,
-				7D5497E91D47481500BEDBF8 /* PMPhotoGridView.swift in Sources */,
-				7D1EA49A1D45C28E007DE8E1 /* PMPickerTitleButton.swift in Sources */,
-				7D1EA4A11D45D18A007DE8E1 /* PMImageGroupController.swift in Sources */,
-				7D1EA4981D45C269007DE8E1 /* PMPhotoHeaderView.swift in Sources */,
-				7D53D9C41D4F24AB00872658 /* PMStyleHeaderView.swift in Sources */,
+				7D53D9FF1D4F4F6500872658 /* PMImageProcessController.swift in Sources */,
+				7D53D9F91D4F4F6500872658 /* PMPhotoGridView.swift in Sources */,
+				7D53D9FC1D4F4F6500872658 /* PMPickerTitleButton.swift in Sources */,
+				7D53DA021D4F4F6500872658 /* PMNavigationController.swift in Sources */,
+				7D53DA0E1D4F50FC00872658 /* PMImageGroupController.swift in Sources */,
+				7D53D9FA1D4F4F6500872658 /* PMPhotoHeaderItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
