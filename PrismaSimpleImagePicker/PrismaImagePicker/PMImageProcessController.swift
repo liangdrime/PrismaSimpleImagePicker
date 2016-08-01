@@ -8,21 +8,51 @@
 
 import UIKit
 
-class PMImageProcessController: UIViewController {
+class PMImageProcessController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
 
     
+    @IBOutlet weak var navigationBar: UINavigationBar!
     @IBOutlet weak var stylesCollectionView: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        navigationBar.setBackgroundImage(UIImage.init(), forBarPosition: UIBarPosition.Top, barMetrics: UIBarMetrics.Default)
+        navigationBar.shadowImage = UIImage.init()
+        
+        let navigationController = self.navigationController as? PMNavigationController
+        stylesCollectionView.panGestureRecognizer.requireGestureRecognizerToFail(navigationController!.panGestureRecognizer)
     }
     
-    
     @IBAction func back(sender: AnyObject) {
-        dismissViewControllerAnimated(true) { 
-            
+        let navigationController = self.navigationController as? PMNavigationController
+        navigationController?.popViewControllerAnimated(true, completion: { (isPush: Bool) in
+            if !isPush {
+                self.photoPisplayBoard?.setState(PMImageDisplayState.EditImage, image: nil, selectedRect: CGRectZero, animated: true)
+            }
+        })
+    }
+    
+    // MARK: UICollectionView M
+    
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 10
+    }
+    
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("styleCell", forIndexPath: indexPath) as? PMStyleCell
+        return cell!
+    }
+    
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        print("click item at \(indexPath.item)")
+    }
+    
+    override func viewDidDisappear(animated: Bool) {
+        super.viewDidDisappear(animated)
+        // Pop handle
+        if navigationController == nil {
+            self.photoPisplayBoard?.setState(PMImageDisplayState.EditImage, image: nil, selectedRect: CGRectZero, animated: true)
         }
     }
 

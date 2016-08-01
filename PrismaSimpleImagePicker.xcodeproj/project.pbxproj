@@ -16,6 +16,8 @@
 		7D1EA4A61D46186F007DE8E1 /* PMImageGroupCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7D1EA4A41D46186F007DE8E1 /* PMImageGroupCell.xib */; };
 		7D1EA4A81D461CCB007DE8E1 /* PMImageGroupModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D1EA4A71D461CCB007DE8E1 /* PMImageGroupModel.swift */; };
 		7D21B5541D4B88760059F999 /* PMImageProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D21B5531D4B88760059F999 /* PMImageProtocol.swift */; };
+		7D53D9C41D4F24AB00872658 /* PMStyleHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D53D9C31D4F24AB00872658 /* PMStyleHeaderView.swift */; };
+		7D53D9CC1D4F3BB800872658 /* PMStyleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D53D9CB1D4F3BB800872658 /* PMStyleCell.swift */; };
 		7D5497E71D47450500BEDBF8 /* PMPhotoHeaderItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D5497E61D47450500BEDBF8 /* PMPhotoHeaderItem.swift */; };
 		7D5497E91D47481500BEDBF8 /* PMPhotoGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D5497E81D47481500BEDBF8 /* PMPhotoGridView.swift */; };
 		7D56B5E21D449BA1009224A5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D56B5E11D449BA1009224A5 /* AppDelegate.swift */; };
@@ -59,6 +61,8 @@
 		7D1EA4A41D46186F007DE8E1 /* PMImageGroupCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PMImageGroupCell.xib; sourceTree = "<group>"; };
 		7D1EA4A71D461CCB007DE8E1 /* PMImageGroupModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PMImageGroupModel.swift; sourceTree = "<group>"; };
 		7D21B5531D4B88760059F999 /* PMImageProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PMImageProtocol.swift; sourceTree = "<group>"; };
+		7D53D9C31D4F24AB00872658 /* PMStyleHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PMStyleHeaderView.swift; sourceTree = "<group>"; };
+		7D53D9CB1D4F3BB800872658 /* PMStyleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PMStyleCell.swift; sourceTree = "<group>"; };
 		7D5497E61D47450500BEDBF8 /* PMPhotoHeaderItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PMPhotoHeaderItem.swift; sourceTree = "<group>"; };
 		7D5497E81D47481500BEDBF8 /* PMPhotoGridView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PMPhotoGridView.swift; sourceTree = "<group>"; };
 		7D56B5DE1D449BA1009224A5 /* PrismaSimpleImagePicker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PrismaSimpleImagePicker.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -114,6 +118,8 @@
 				7D5497E61D47450500BEDBF8 /* PMPhotoHeaderItem.swift */,
 				7D5497E81D47481500BEDBF8 /* PMPhotoGridView.swift */,
 				7D1BA1001D4919BC0068032E /* PMCaptureButtom.swift */,
+				7D53D9C31D4F24AB00872658 /* PMStyleHeaderView.swift */,
+				7D53D9CB1D4F3BB800872658 /* PMStyleCell.swift */,
 			);
 			path = PrismaViews;
 			sourceTree = "<group>";
@@ -311,6 +317,7 @@
 				7D605FDC1D4B2A400053F93C /* FMDeviceOrientation.swift in Sources */,
 				7D21B5541D4B88760059F999 /* PMImageProtocol.swift in Sources */,
 				7D56B6151D44C0DC009224A5 /* PMImageEditController.swift in Sources */,
+				7D53D9CC1D4F3BB800872658 /* PMStyleCell.swift in Sources */,
 				7D605FD31D4AF2210053F93C /* PMImageManger.swift in Sources */,
 				7D56B6051D449BFF009224A5 /* PMImagePickerController.swift in Sources */,
 				7D56B60D1D44C000009224A5 /* PMRootViewController.swift in Sources */,
@@ -327,6 +334,7 @@
 				7D1EA49A1D45C28E007DE8E1 /* PMPickerTitleButton.swift in Sources */,
 				7D1EA4A11D45D18A007DE8E1 /* PMImageGroupController.swift in Sources */,
 				7D1EA4981D45C269007DE8E1 /* PMPhotoHeaderView.swift in Sources */,
+				7D53D9C41D4F24AB00872658 /* PMStyleHeaderView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

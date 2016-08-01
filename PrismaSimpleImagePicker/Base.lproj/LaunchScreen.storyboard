@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -39,8 +40,11 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="lck-K3-UNi" secondAttribute="trailing" id="491-iO-hyt"/>
                             <constraint firstAttribute="trailingMargin" secondItem="lck-K3-UNi" secondAttribute="trailing" constant="-20" id="Hel-T5-Yht"/>
+                            <constraint firstItem="lck-K3-UNi" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="Hqq-dL-yOk"/>
                             <constraint firstItem="lck-K3-UNi" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" constant="-20" id="QCd-T7-8gM"/>
+                            <constraint firstItem="lck-K3-UNi" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="YAA-KU-Z7x"/>
                             <constraint firstItem="lck-K3-UNi" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="-20" id="z51-nA-Cb2"/>
                         </constraints>
                         <variation key="default">
@@ -48,8 +52,11 @@
                                 <exclude reference="lck-K3-UNi"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="491-iO-hyt"/>
                                 <exclude reference="Hel-T5-Yht"/>
+                                <exclude reference="Hqq-dL-yOk"/>
                                 <exclude reference="QCd-T7-8gM"/>
+                                <exclude reference="YAA-KU-Z7x"/>
                                 <exclude reference="z51-nA-Cb2"/>
                             </mask>
                         </variation>
@@ -58,12 +65,16 @@
                                 <include reference="lck-K3-UNi"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="Hel-T5-Yht"/>
-                                <include reference="QCd-T7-8gM"/>
-                                <include reference="z51-nA-Cb2"/>
+                                <include reference="491-iO-hyt"/>
+                                <exclude reference="Hel-T5-Yht"/>
+                                <include reference="Hqq-dL-yOk"/>
+                                <exclude reference="QCd-T7-8gM"/>
+                                <include reference="YAA-KU-Z7x"/>
+                                <exclude reference="z51-nA-Cb2"/>
                             </mask>
                         </variation>
                     </view>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

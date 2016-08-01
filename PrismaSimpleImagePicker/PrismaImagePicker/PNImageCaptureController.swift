@@ -12,10 +12,11 @@ import AssetsLibrary
 import Photos
 import CoreImage
 
-class PNImageCaptureController: UIViewController {
+class PNImageCaptureController: UIViewController, PMImagePickerControllerDelegate {
 
     
     @IBOutlet weak var captureButton: PMCaptureButton!
+    @IBOutlet weak var navigationBar: UINavigationBar!
     @IBOutlet weak var flashBarItem: UIBarButtonItem!
     @IBOutlet weak var selectPhotoButton: UIButton!
     var session: AVCaptureSession! = AVCaptureSession()
@@ -25,6 +26,7 @@ class PNImageCaptureController: UIViewController {
     var photoGroups = [PHAssetCollection]()
     var photoAssets = [PHAsset]()
     var isUsingFrontFacingCamera: Bool = false
+    var currentFlashMode: AVCaptureFlashMode = .Off
     let screenSize = ScreenSize()
     let orientationManger: FMDeviceOrientation = FMDeviceOrientation()
     
@@ -54,9 +56,29 @@ class PNImageCaptureController: UIViewController {
                 })
             }
         }
+        
+        // Tap header to change focus
+        photoPisplayBoard?.singleTapHeaderAction = { (tap: UITapGestureRecognizer) in
+            self.tapToChangeFocus(tap)
+        }
     }
     
     func initNavigationBar() {
+        // Navigation bar
+        navigationBar.setBackgroundImage(UIImage.init(), forBarPosition: UIBarPosition.Top, barMetrics: UIBarMetrics.Default)
+        navigationBar.shadowImage = UIImage.init()
+        
+        let navigationItem = navigationBar.topItem
+        
+        // Flash button
+        let letButton = UIButton.init(type: UIButtonType.System)
+        letButton.frame = CGRectMake(-10, 0, 44, 44)
+        letButton.setImage(UIImage.init(named: "flash"), forState: UIControlState.Normal)
+        letButton.addTarget(self, action: #selector(self.changeFlash(_:)), forControlEvents: UIControlEvents.TouchUpInside)
+        let letBarItem = UIBarButtonItem.init(customView: letButton)
+        letButton.imageEdgeInsets = UIEdgeInsetsMake(0, -10, 0, 10)
+        navigationItem!.leftBarButtonItem = letBarItem
+        
         // Camera possion
         let image = UIImage.init(named: "flip")
         let hImage = image?.imageWithColor(UIColor.lightGrayColor())
@@ -66,7 +88,7 @@ class PNImageCaptureController: UIViewController {
         titleButton.setImage(hImage, forState: UIControlState.Highlighted)
         titleButton.sizeToFit()
         titleButton.addTarget(self, action: #selector(self.changeCameraPossion), forControlEvents: UIControlEvents.TouchUpInside)
-        navigationItem.titleView = titleButton
+        navigationItem!.titleView = titleButton
     }
     
     func initAVCapture() {
@@ -78,10 +100,13 @@ class PNImageCaptureController: UIViewController {
             device.flashMode = AVCaptureFlashMode.Off
         }
         if device.isFocusModeSupported(.AutoFocus) {
-            device.focusMode = .ContinuousAutoFocus
+            device.focusMode = .AutoFocus
         }
         if device.isWhiteBalanceModeSupported(.AutoWhiteBalance) {
             device.whiteBalanceMode = .AutoWhiteBalance
+        }
+        if device.exposurePointOfInterestSupported {
+            device.exposureMode = .ContinuousAutoExposure
         }
         device.unlockForConfiguration()
         
@@ -105,12 +130,15 @@ class PNImageCaptureController: UIViewController {
         // Preview
         previewLayer = AVCaptureVideoPreviewLayer.init(session: session)
         previewLayer?.videoGravity = AVLayerVideoGravityResizeAspectFill
+        
+        // Set root vc avcapture preview layer
+        photoPisplayBoard?.setAVCapturePreviewLayer(previewLayer!)
     }
     
     // MARK: Capture action
     
     @IBAction func capturePhoto(sender: AnyObject) {
-//        return
+
         let stillImageConnection = stillImageOutPut?.connectionWithMediaType(AVMediaTypeVideo)
         let curDeviceOrientation = UIDevice.currentDevice().orientation
         let avCaptureOrientation = FMDeviceOrientation.avOrientationFromDeviceOrientation(curDeviceOrientation)
@@ -121,14 +149,12 @@ class PNImageCaptureController: UIViewController {
         
         stillImageOutPut?.captureStillImageAsynchronouslyFromConnection(stillImageConnection, completionHandler: { (imageDataSampleBuffer: CMSampleBufferRef!, error: NSError!) in
             let jpegData = AVCaptureStillImageOutput.jpegStillImageNSDataRepresentation(imageDataSampleBuffer)
-            let attachments = CMCopyDictionaryOfAttachments(kCFAllocatorDefault,imageDataSampleBuffer,kCMAttachmentMode_ShouldPropagate)
-//            let attachments = CMGetAttachment(imageDataSampleBuffer, kCGImagePropertyExifDictionary, nil)
             
             if var image = UIImage(data: jpegData) {
                 
                 // Fix orientation & crop image
                 image = image.fixOrientation()
-                image = PMImageManger.cropImage(image,toSize: self.previewLayer!.frame.size)
+                image = PMImageManger.cropImageAffterCapture(image,toSize: self.previewLayer!.frame.size)
                 
                 // Fix interface orientation
                 if !self.orientationManger.deviceOrientationMatchesInterfaceOrientation() {
@@ -139,6 +165,10 @@ class PNImageCaptureController: UIViewController {
                 // Mirror the image
                 if self.isUsingFrontFacingCamera {
                     image = UIImage.init(CGImage: image.CGImage!, scale: image.scale, orientation: UIImageOrientation.UpMirrored)
+                    
+                    let imageV = UIImageView.init(frame: self.previewLayer!.bounds)
+                    imageV.image = image
+                    self.view.addSubview(imageV)
                 }
                 
                 // Save photo
@@ -148,10 +178,18 @@ class PNImageCaptureController: UIViewController {
                 }
                 
                 let library = ALAssetsLibrary()
-                
-                library.writeImageToSavedPhotosAlbum(image.CGImage!, metadata: attachments as? [NSObject:AnyObject] , completionBlock: { (url: NSURL!, error: NSError!) in
-                    
-                })
+                print("image orientation is \(image.imageOrientation.rawValue)")
+                if self.isUsingFrontFacingCamera {
+                    let attachments = CMCopyDictionaryOfAttachments(kCFAllocatorDefault,imageDataSampleBuffer,kCMAttachmentMode_ShouldPropagate)
+//            let attachments = CMGetAttachment(imageDataSampleBuffer, kCGImagePropertyExifDictionary, nil)
+                    library.writeImageToSavedPhotosAlbum(image.CGImage!, metadata: attachments as? [NSObject:AnyObject] , completionBlock: { (url: NSURL!, error: NSError!) in
+                        
+                    })
+                }else {
+                    library.writeImageToSavedPhotosAlbum(image.CGImage, orientation: ALAssetOrientation.UpMirrored, completionBlock: { (url: NSURL!, error: NSError!) in
+                        
+                    })
+                }
             }
             
         })
@@ -162,25 +200,36 @@ class PNImageCaptureController: UIViewController {
     }
     
     func changeCameraPossion() {
+        
         var desiredPosition : AVCaptureDevicePosition?
+        let navigationItem = navigationBar.topItem
+        
         if (isUsingFrontFacingCamera){
             desiredPosition = AVCaptureDevicePosition.Back
+            navigationItem!.leftBarButtonItem!.customView?.userInteractionEnabled = true
+            navigationItem!.leftBarButtonItem!.highlighted = false
         }else{
             desiredPosition = AVCaptureDevicePosition.Front
+            navigationItem!.leftBarButtonItem!.customView?.userInteractionEnabled = false
+            navigationItem!.leftBarButtonItem!.highlighted = true
         }
+                
         for device in AVCaptureDevice.devicesWithMediaType(AVMediaTypeVideo) {
             let device = device as! AVCaptureDevice
             if device.position == desiredPosition {
                 // Config device
                 try! device.lockForConfiguration()
                 if device.hasFlash {
-                    device.flashMode = AVCaptureFlashMode.Off
+                    device.flashMode = currentFlashMode
                 }
                 if device.isFocusModeSupported(.AutoFocus) {
                     device.focusMode = .ContinuousAutoFocus
                 }
                 if device.isWhiteBalanceModeSupported(.AutoWhiteBalance) {
                     device.whiteBalanceMode = .AutoWhiteBalance
+                }
+                if device.exposurePointOfInterestSupported {
+                    device.exposureMode = .ContinuousAutoExposure
                 }
                 device.unlockForConfiguration()
                 // Add device
@@ -195,12 +244,47 @@ class PNImageCaptureController: UIViewController {
         isUsingFrontFacingCamera = !isUsingFrontFacingCamera;
     }
     
+    // Tap header to focus
+    func tapToChangeFocus(tap: UITapGestureRecognizer) {
+        guard !isUsingFrontFacingCamera else {
+            return
+        }
+        // Location
+        let point = tap.locationInView(photoPisplayBoard?.displayHeaderView)
+        
+        // Show square
+        showSquareBox(point)
+        
+        // Change focus
+//        let pointInCamera = convertToPointOfInterestFromViewCoordinates(point)
+        let pointInCamera = previewLayer!.captureDevicePointOfInterestForPoint(point)
+        let device = deviceIntput?.device
+        try! device!.lockForConfiguration()
+        
+        if device!.focusPointOfInterestSupported {
+            device!.focusPointOfInterest = pointInCamera
+        }
+        if device!.isFocusModeSupported(.ContinuousAutoFocus) {
+            device!.focusMode = .ContinuousAutoFocus
+        }
+        if device!.exposurePointOfInterestSupported {
+            device?.exposureMode = .ContinuousAutoExposure
+            device?.exposurePointOfInterest = pointInCamera
+        }
+        device?.subjectAreaChangeMonitoringEnabled = true
+        device!.focusPointOfInterest = pointInCamera
+        
+        device!.unlockForConfiguration()
+    }
+    
     @IBAction func selectPhoto(sender: AnyObject) {
         let nav = PMImagePickerController.init()
+        nav.pmDelegate = self
         nav.photoGroups = photoGroups
         nav.photoAssets = photoAssets
+        weak var weakSelf = self
         self.presentViewController(nav, animated: true) {
-            
+            weakSelf!.session.stopRunning()
         }
     }
     
@@ -213,19 +297,23 @@ class PNImageCaptureController: UIViewController {
             switch device.flashMode {
             case .Off:
                 device.flashMode = .On
+                currentFlashMode = .On
                 image = UIImage.init(named: "flash-on")
                 break
             case .On:
                 device.flashMode = .Auto
+                currentFlashMode = .Auto
                 image = UIImage.init(named: "flash-auto")
                 break
             case .Auto:
                 device.flashMode = .Off
+                currentFlashMode = .Off
                 image = UIImage.init(named: "flash")
                 break
             }
             // Flash baritem
-            navigationItem.leftBarButtonItem?.image = image
+            let letButton = navigationBar.topItem!.leftBarButtonItem?.customView as? UIButton
+            letButton?.setImage(image, forState: UIControlState.Normal)
         }
         device.unlockForConfiguration()
     }
@@ -234,6 +322,93 @@ class PNImageCaptureController: UIViewController {
         
     }
     
+    // Show focus square box
+    private func showSquareBox(point: CGPoint) {
+        // remove box
+        guard let header = photoPisplayBoard?.displayHeaderView else {
+            return
+        }
+        for layer in header.layer.sublayers!{
+            if layer.name == "box" {
+                layer.removeFromSuperlayer()
+            }
+        }
+        // create a box layer
+        let width = CGFloat(60)
+        let box = CAShapeLayer.init()
+        box.frame = CGRectMake(point.x - width/2, point.y - width/2, width, width)
+        box.borderWidth = 1
+        box.borderColor = UIColor.whiteColor().CGColor
+        box.name = "box"
+        header.layer.addSublayer(box)
+        
+        // animation
+        let alphaAnimation = CABasicAnimation.init(keyPath: "opacity")
+        alphaAnimation.fromValue = 1
+        alphaAnimation.toValue = 0
+        alphaAnimation.duration = 0.01
+        alphaAnimation.beginTime = CACurrentMediaTime()
+        
+        let scaleAnimation = CABasicAnimation.init(keyPath: "transform.scale")
+        scaleAnimation.fromValue = 1.2
+        scaleAnimation.toValue = 1
+        scaleAnimation.duration = 0.35
+        scaleAnimation.beginTime = CACurrentMediaTime()
+        
+        box.addAnimation(alphaAnimation, forKey: nil)
+        box.addAnimation(scaleAnimation, forKey: nil)
+        
+        let time = dispatch_time(DISPATCH_TIME_NOW, Int64((0.35 + 0.2) * Double(NSEC_PER_SEC)))
+        dispatch_after(time, dispatch_get_main_queue()) {
+            box.removeFromSuperlayer()
+        }
+    }
+    
+    // Convert the touch point to focus point of interest. The focus point of interest is from [0, 0] to [1, 1].
+    private func convertToPointOfInterestFromViewCoordinates(point: CGPoint) -> CGPoint {
+        var interestPoint = CGPointMake(0.5, 0.5)
+        for _port in deviceIntput!.ports {
+            if let port = _port as? AVCaptureInputPort {
+                let cleanAperture = CMVideoFormatDescriptionGetCleanAperture(port.formatDescription, true)
+                let apertureSize = cleanAperture.size
+                let frameSize = previewLayer?.bounds.size
+                let apertureRatio = apertureSize.height / apertureSize.width;
+                let viewRatio = frameSize!.width / frameSize!.height;
+                var xc = CGFloat(0.5)
+                var yc = CGFloat(0.5)
+                
+                // Just calculate videoGravity of AVLayerVideoGravityResizeAspectFill mode
+                if viewRatio > apertureRatio {
+                    let y2 = apertureSize.width * (frameSize!.width / apertureSize.height)
+                    xc = (point.y + ((y2 - frameSize!.height) / 2)) / y2
+                    yc = (frameSize!.width - point.x) / frameSize!.width
+                } else {
+                    let x2 = apertureSize.height * (frameSize!.height / apertureSize.width)
+                    yc = 1.0 - ((point.x + ((x2 - frameSize!.width) / 2)) / x2)
+                    xc = point.y / frameSize!.height
+                }
+                interestPoint = CGPointMake(xc, yc)
+                break
+            }
+        }
+        return interestPoint
+    }
+    
+    // MARK: PMImagePickerControllerDelegate
+    
+    func imagePickerController(picker: PMImagePickerController, didFinishPickingImage originalImage: UIImage, selectedRect: CGRect) {
+        photoPisplayBoard?.setState(PMImageDisplayState.EditImage, image: originalImage, selectedRect: selectedRect, animated: false)
+        
+        let storyBoard = UIStoryboard.init(name: "Main", bundle: nil)
+        let editVC = storyBoard.instantiateViewControllerWithIdentifier("imageEditController") as? PMImageEditController
+        navigationController?.pushViewController(editVC!, animated: false)
+    }
+    
+    func imagePickerController(picker: PMImagePickerController, didFinishPickingImage image: UIImage) {}
+    
+    func imagePickerControllerDidCancel(picker: PMImagePickerController) {
+        session.startRunning()
+    }
     
     override func viewWillAppear(animated: Bool) {
         session.startRunning()
@@ -256,3 +431,22 @@ class PNImageCaptureController: UIViewController {
     */
 
 }
+
+extension UIBarButtonItem {
+    
+    var highlighted: Bool {
+        set {
+            if let button = customView as? UIButton {
+                button.highlighted = newValue
+            }
+        }
+        get {
+            if let button = customView as? UIButton {
+                return button.highlighted
+            }
+            return false
+        }
+    }
+}
+
+

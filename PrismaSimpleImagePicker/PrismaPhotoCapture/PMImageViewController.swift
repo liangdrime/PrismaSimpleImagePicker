@@ -28,6 +28,11 @@ class PMImageViewController: UIViewController, UICollectionViewDelegate, UIColle
     @IBOutlet weak var dsiplayHeader: PMPhotoHeaderView!
     @IBOutlet weak var albumCollection: UICollectionView!
     @IBOutlet weak var headerTopConstraints: NSLayoutConstraint!
+    private weak var pmNavigationController: PMImagePickerController? {
+        get {
+            return navigationController as? PMImagePickerController
+        }
+    }
     var titleButton: PMPickerTitleButton?
     let screenSize: ScreenSize = ScreenSize()
     let constParams: ConstParams = ConstParams()
@@ -124,7 +129,7 @@ class PMImageViewController: UIViewController, UICollectionViewDelegate, UIColle
                 }
                 
                 PMImageManger.imageFromAsset(self.photoAssets!.first!, isOriginal: true, toSize: nil, resultHandler: { (image: UIImage?) in
-                    self.dsiplayHeader.setImage(image!)
+                    self.dsiplayHeader.setImage(image!, scrollToRect: CGRectZero)
                 })
                 
                 for asset: PHAsset in self.photoAssets! {
@@ -142,14 +147,44 @@ class PMImageViewController: UIViewController, UICollectionViewDelegate, UIColle
         }
     }
     
-    // MARK: Handel
+    // MARK: Handle
     
     func cancel() {
-        dismissViewControllerAnimated(true, completion: nil)
+        dismissViewControllerAnimated(true) {
+            let navigationController = self.pmNavigationController
+            navigationController?.pmDelegate?.imagePickerControllerDidCancel?(navigationController!)
+        }
     }
     
     func confirm() {
+        var imageRect = CGRectZero
+        var finalImage = dsiplayHeader.image
+        let ratio = finalImage.size.width/finalImage.size.height
+        if ratio > 1 {
+            var x = fmax(dsiplayHeader.imageView.contentOffset.x, 0)
+            x = x/dsiplayHeader.imageView.contentSize.width * finalImage.size.width
+            imageRect = CGRectMake(x, 0, finalImage.size.height, finalImage.size.height)
+        }else if ratio < 1 {
+            var y = fmax(dsiplayHeader.imageView.contentOffset.y, 0)
+            y = y/dsiplayHeader.imageView.contentSize.height * finalImage.size.height
+            imageRect = CGRectMake(0, y, finalImage.size.width, finalImage.size.width)
+        }
         
+        let navigationController = self.pmNavigationController
+        let responsOriginal = navigationController?.pmDelegate?.respondsToSelector(#selector(PMImagePickerControllerDelegate.imagePickerController(_:didFinishPickingImage:selectedRect:)))
+        if (responsOriginal != nil) {
+            // Not crop the image just call delegate with original image
+            navigationController?.pmDelegate?.imagePickerController!(navigationController!, didFinishPickingImage: finalImage, selectedRect: imageRect)
+        }else {
+            // Get the final cropped image
+            finalImage = PMImageManger.cropImageToRect(finalImage, toRect: imageRect)
+            // Call delegate
+            navigationController?.pmDelegate?.imagePickerController?(navigationController!, didFinishPickingImage: finalImage)
+        }
+        
+        dismissViewControllerAnimated(true) {
+            
+        }
     }
     
     func selectPhotoGroup() {
@@ -184,7 +219,7 @@ class PMImageViewController: UIViewController, UICollectionViewDelegate, UIColle
                 weakSelf?.photoAssets = PMImageManger.photoAssetsForAlbum(groupCollection)
                 PMImageManger.imageFromAsset(weakSelf!.photoAssets!.first!, isOriginal: true, toSize: nil, resultHandler: { (image: UIImage?) in
                     if let _image = image {
-                        weakSelf!.dsiplayHeader.setImage(_image)
+                        weakSelf!.dsiplayHeader.setImage(_image, scrollToRect: CGRectZero)
                     }
                 })
                 weakSelf!.photos.removeAll()
@@ -328,7 +363,7 @@ class PMImageViewController: UIViewController, UICollectionViewDelegate, UIColle
         // Set image
         PMImageManger.imageFromAsset(photoAssets![indexPath.item], isOriginal: true, toSize: nil, resultHandler: { (image: UIImage?) in
             if let _image = image {
-                self.dsiplayHeader.setImage(_image)
+                self.dsiplayHeader.setImage(_image, scrollToRect: CGRectZero)
             }
         })
     }
@@ -545,8 +580,7 @@ extension UIScrollView {
     func pm_handlePan(pan: UIPanGestureRecognizer) {
         pm_handlePan(pan)
         
-        let responds = delegate?.respondsToSelector(NSSelectorFromString("scrollViewDidPan:"))
-        if responds! {
+        if delegate != nil && delegate!.respondsToSelector(NSSelectorFromString("scrollViewDidPan:")) {
             delegate?.performSelector(NSSelectorFromString("scrollViewDidPan:"), withObject: pan)
         }
     }

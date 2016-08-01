@@ -10,27 +10,47 @@ import UIKit
 
 class PMImageEditController: UIViewController {
 
+    @IBOutlet weak var navigationBar: UINavigationBar!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        navigationBar.setBackgroundImage(UIImage.init(), forBarPosition: UIBarPosition.Top, barMetrics: UIBarMetrics.Default)
+        navigationBar.shadowImage = UIImage.init()
     }
     
     @IBAction func rotateRight(sender: AnyObject) {
-        
+        photoPisplayBoard?.rotateDisplayImage(true)
     }
     
     @IBAction func rotateLeft(sender: AnyObject) {
-        
+        photoPisplayBoard?.rotateDisplayImage(false)
     }
     
     @IBAction func next(sender: AnyObject) {
+        let finalImage = photoPisplayBoard?.croppedImage()
+        photoPisplayBoard?.setState(.SingleShow, image: finalImage, selectedRect: CGRectZero, animated: false)
         
+        // Push to style vc
+        let storyBoard = UIStoryboard.init(name: "Main", bundle: nil)
+        let styleVC = storyBoard.instantiateViewControllerWithIdentifier("styleImageController") as? PMImageProcessController
+        navigationController?.pushViewController(styleVC!, animated: true)
     }
     
     @IBAction func back(sender: AnyObject) {
-        dismissViewControllerAnimated(true) {
-            
+        let navigationController = self.navigationController as? PMNavigationController
+        navigationController?.popViewControllerAnimated(true, completion: { (isPush: Bool) in
+            if !isPush {
+                self.photoPisplayBoard?.setState(PMImageDisplayState.Preivew, image: nil, selectedRect: CGRectZero, animated: true)
+            }
+        })
+    }
+    
+    override func viewDidDisappear(animated: Bool) {
+        super.viewDidDisappear(animated)
+        // Pop handle
+        if navigationController == nil {
+            self.photoPisplayBoard?.setState(PMImageDisplayState.Preivew, image: nil, selectedRect: CGRectZero, animated: true)
         }
     }
 

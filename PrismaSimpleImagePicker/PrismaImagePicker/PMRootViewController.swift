@@ -7,16 +7,24 @@
 //
 
 import UIKit
+import AVFoundation
 
-class PMRootViewController: UIViewController {
+class PMRootViewController: UIViewController, PMImageProtocol {
 
     
     @IBOutlet weak var captureHeaderView: UIView!
-    var captureController: PNImageCaptureController?
+    var previewLayer: AVCaptureVideoPreviewLayer?
     var photoHeaderView: PMPhotoHeaderView?
+    var styleHeaderView: PMStyleHeaderView?
+    var state: PMImageDisplayState = PMImageDisplayState.Preivew
+    var imageAngle: CGFloat = 0
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        captureHeaderView.backgroundColor = UIColor.whiteColor()
+        captureHeaderView.layer.masksToBounds = true
         
         // Add navigation 
         let storyBoard = UIStoryboard.init(name: "Main", bundle: nil)
@@ -25,24 +33,160 @@ class PMRootViewController: UIViewController {
         self.addChildViewController(baseNav!)
         view.addSubview(baseNav!.view)
         
-        captureController = baseNav?.viewControllers.first as? PNImageCaptureController
-        captureHeaderView.layer.masksToBounds = true
-        
-        photoHeaderView = PMPhotoHeaderView.init(frame: captureHeaderView.bounds)
-        photoHeaderView?.hidden = true
-        captureHeaderView.addSubview(photoHeaderView!)
-    }
-    
-    override func viewDidLayoutSubviews() {
-        photoHeaderView?.frame = captureHeaderView.bounds
+        // Tap gesture to focus
+        let tap = UITapGestureRecognizer.init(target: self, action: #selector(PMRootViewController.tapHeader))
+        tap.numberOfTapsRequired = 1
+        captureHeaderView.addGestureRecognizer(tap)
     }
     
     override func viewDidAppear(animated: Bool) {
         // Preview
-        if let previewLayer = captureController?.previewLayer {
-            previewLayer.frame = captureHeaderView.bounds
-            captureHeaderView.layer.insertSublayer(previewLayer, below: photoHeaderView?.layer)
+        if let layer = previewLayer {
+            CATransaction.begin()
+            CATransaction.setDisableActions(true)
+            layer.frame = captureHeaderView.bounds
+            CATransaction.commit()
         }
+    }
+    
+    // Tap header to focus
+    func tapHeader(tap: UITapGestureRecognizer) {
+        
+        singleTapHeaderAction(tap: tap)
+    }
+
+    
+    // MARK: PMImageProtocol
+    
+    // Display header view
+    var displayHeaderView: UIView {
+        return captureHeaderView
+    }
+    
+    // Display image
+    var displayImage: UIImage {
+        get {
+            if let style = styleHeaderView {
+                return style.imageView.image!
+            }
+            return (photoHeaderView?.image)!
+        }
+    }
+    
+    // Tap header to focus
+    private var _singleTapHeaderAction: ((tap: UITapGestureRecognizer)->Void) = {(tap: UITapGestureRecognizer) in}
+    var singleTapHeaderAction: ((tap: UITapGestureRecognizer)->Void) {
+        set {
+            _singleTapHeaderAction = newValue
+        }
+        get {
+            return _singleTapHeaderAction
+        }
+    }
+    
+    // Image orienttation affter rotated
+    private var _rotatedImageOrientation: PMImageOrientation = .Up
+    var rotatedImageOrientation: PMImageOrientation {
+        get {
+            return _rotatedImageOrientation
+        }
+        set {
+            _rotatedImageOrientation = newValue
+        }
+    }
+    
+    // Set the AVCaptureVideoPreviewLayer
+    func setAVCapturePreviewLayer(previewLayer: AVCaptureVideoPreviewLayer) {
+        self.previewLayer = previewLayer
+        captureHeaderView.layer.insertSublayer(previewLayer, below: photoHeaderView?.layer)
+    }
+    
+    // Change state
+    func setState(state: PMImageDisplayState, image: UIImage?, selectedRect: CGRect, animated: Bool) {
+        guard self.state != state else {
+            return
+        }
+        let duration = animated ?0.25:0.0
+        switch state {
+        case .Preivew:
+            UIView.animateWithDuration(0.25, animations: {
+                self.photoHeaderView!.alpha = 0
+                self.previewLayer?.opacity = 1
+                }, completion: { (com: Bool) in
+                    if com {
+                        self.photoHeaderView?.removeFromSuperview()
+                        self.photoHeaderView = nil
+                    }
+            })
+            break
+        case .EditImage:
+            if self.state == .Preivew {
+                // Go edit vc and add edit header
+                let photoHeaderView = PMPhotoHeaderView.init(frame: captureHeaderView.bounds)
+                photoHeaderView.backgroundColor = UIColor.whiteColor()
+                photoHeaderView.alpha = 0
+                photoHeaderView.alwaysShowGrid = true
+                captureHeaderView.addSubview(photoHeaderView)
+                // config the image rect
+                var toRect = selectedRect
+                if image?.size.width > image?.size.height {
+                    toRect.origin.x = toRect.origin.x * photoHeaderView.bounds.size.height/(image?.size.height)!
+                }else {
+                    toRect.origin.y = toRect.origin.y * photoHeaderView.bounds.size.width/(image?.size.width)!
+                }
+                toRect.size = photoHeaderView.bounds.size
+                photoHeaderView.setImage(image!, scrollToRect: toRect)
+                
+                UIView.animateWithDuration(duration, animations: {
+                    photoHeaderView.alpha = 1
+                    self.previewLayer?.opacity = 0
+                    }, completion: { (com: Bool) in
+                        
+                })
+                self.photoHeaderView = photoHeaderView
+            }else if self.state == .SingleShow {
+                UIView.animateWithDuration(duration, animations: { 
+                    self.styleHeaderView?.alpha = 0
+                    }, completion: { (com: Bool) in
+                        self.styleHeaderView?.removeFromSuperview()
+                        self.styleHeaderView = nil
+                })
+            }
+            break
+        case .SingleShow:
+            // Go style vc
+            let styleHeaderView = PMStyleHeaderView.init(frame: captureHeaderView.bounds)
+            styleHeaderView.setImage(image!)
+            styleHeaderView.alpha = 0
+            captureHeaderView.addSubview(styleHeaderView)
+            
+            UIView.animateWithDuration(duration, animations: {
+                styleHeaderView.alpha = 1
+                }, completion: { (com: Bool) in
+                    
+            })
+            
+            self.styleHeaderView = styleHeaderView
+            break
+        }
+        self.state = state
+    }
+    
+    // Rotate image
+    func rotateDisplayImage(clockwise: Bool) {
+        
+        if clockwise {
+            imageAngle += CGFloat(M_PI/2)
+        }else {
+            imageAngle -= CGFloat(M_PI/2)
+        }
+        photoHeaderView?.rotate(imageAngle, closeWise: clockwise)
+    }
+    
+    // Cropped image affter edit
+    func croppedImage() -> UIImage {
+        let image = photoHeaderView?.cropImageAffterEdit()
+        return image!
     }
     
     override func prefersStatusBarHidden() -> Bool {

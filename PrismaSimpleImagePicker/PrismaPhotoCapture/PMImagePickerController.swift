@@ -9,10 +9,17 @@
 import UIKit
 import Photos
 
+@objc protocol PMImagePickerControllerDelegate: NSObjectProtocol {
+    optional func imagePickerController(picker: PMImagePickerController, didFinishPickingImage image: UIImage)
+    optional func imagePickerController(picker: PMImagePickerController, didFinishPickingImage originalImage: UIImage, selectedRect: CGRect)
+    optional func imagePickerControllerDidCancel(picker: PMImagePickerController)
+}
+
 class PMImagePickerController: UINavigationController {
     
     private var _photoGroups: [PHAssetCollection]? = [PHAssetCollection]()
     private var _photoAssets: [PHAsset]? = [PHAsset]()
+    weak var pmDelegate: PMImagePickerControllerDelegate?
     var photoGroups: [PHAssetCollection] {
         set {
             _photoGroups = newValue

@@ -13,6 +13,7 @@ class PMPhotoHeaderItem: UIScrollView, UIScrollViewDelegate {
 
     var imageContainerView: UIView = UIView.init()
     var imageView: UIImageView = UIImageView.init()
+    var selectedRect: CGRect = CGRectZero
     
     override var frame: CGRect {
         didSet {
@@ -60,8 +61,9 @@ class PMPhotoHeaderItem: UIScrollView, UIScrollViewDelegate {
         addGestureRecognizer(doubleTap)
     }
     
-    func setImage(image: UIImage) {
+    func setImage(image: UIImage, scrollToRect: CGRect) {
         imageView.image = image
+        selectedRect = scrollToRect
         // Reset contentSize
         resetSubViews()
     }
@@ -105,7 +107,10 @@ class PMPhotoHeaderItem: UIScrollView, UIScrollViewDelegate {
             imageContainerView.frame = frame
             imageView.frame = imageContainerView.bounds
             
-            let fitRect = CGRectMake((contentSize.width - bounds.size.width)/2, (contentSize.height - bounds.size.height)/2, bounds.size.width, bounds.size.height)
+            var fitRect = CGRectMake((contentSize.width - bounds.size.width)/2, (contentSize.height - bounds.size.height)/2, bounds.size.width, bounds.size.height)
+            if !CGRectEqualToRect(selectedRect, CGRectZero) {
+                fitRect = selectedRect
+            }
             scrollRectToVisible(fitRect, animated: false)
         }
     }

@@ -49,8 +49,8 @@ class PMImageManger: NSObject {
         }
     }
     
-    /// Crop the image to target size
-    class func cropImage(originImage: UIImage, toSize: CGSize) -> UIImage {
+    /// Crop the image to target size, default crop in the middle
+    class func cropImageAffterCapture(originImage: UIImage, toSize: CGSize) -> UIImage {
         
         let ratio = toSize.height/toSize.width
         let width = originImage.size.width
@@ -60,6 +60,14 @@ class PMImageManger: NSObject {
         
         let finalRect = CGRectMake(x, y, width, height)
         let croppedImage = UIImage.init(CGImage: CGImageCreateWithImageInRect(originImage.CGImage, finalRect)!, scale: originImage.scale, orientation: originImage.imageOrientation)
+        
+        return croppedImage
+    }
+    
+    /// Crop the image to target rect
+    class func cropImageToRect(originImage: UIImage, toRect: CGRect) -> UIImage {
+        
+        let croppedImage = UIImage.init(CGImage: CGImageCreateWithImageInRect(originImage.CGImage, toRect)!, scale: originImage.scale, orientation: originImage.imageOrientation)
         
         return croppedImage
     }
@@ -165,6 +173,30 @@ class PMImageManger: NSObject {
         PHImageManager.defaultManager().requestImageForAsset(asset, targetSize: size, contentMode: PHImageContentMode.AspectFill, options: options) { (image: UIImage?, info: [NSObject : AnyObject]?) in
             resultHandler(image)
         }
+    }
+    
+    // Translate degress to image orientation
+    class func imageOrientationFromDegress(angle: CGFloat) -> UIImageOrientation {
+        var orientation = UIImageOrientation.Up
+        let ratio = (angle/CGFloat(M_PI/2))%4
+        switch ratio {
+        case 0:
+            orientation = .Up
+            break
+        case 1:
+            orientation = .Right
+            break
+        case 2:
+            orientation = .Down
+            break
+        case 3:
+            orientation = .Left
+            break
+        default:
+            orientation = .Up
+            break
+        }
+        return orientation
     }
 }
 
@@ -331,17 +363,6 @@ extension UIImage {
         
         return UIImage(CGImage: cgImage)
     }
-    
-    func _fixOrientation() -> UIImage {
-        if imageOrientation == UIImageOrientation.Up {
-            return self
-        }
-        UIGraphicsBeginImageContextWithOptions(size, false, scale);
-        drawInRect(CGRectMake(0, 0, size.width, size.height))
-        let normalizedImage = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        return normalizedImage
-    }
 }
 
 
@@ -363,4 +384,5 @@ extension UIColor {
 extension UIDevice {
     
 }
+
 

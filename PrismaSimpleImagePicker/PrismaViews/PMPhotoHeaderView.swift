@@ -16,6 +16,7 @@ class PMPhotoHeaderView: UIView {
     var tapAction: ((view: PMPhotoHeaderView)->Void)?
     var gridMask: PMPhotoGridView = PMPhotoGridView()
     var alwaysShowGrid: Bool = false
+    var currentAngle = CGFloat(0)
     private var _editEnabled: Bool = true
     var editEnabled: Bool {
         set {
@@ -25,6 +26,15 @@ class PMPhotoHeaderView: UIView {
         }
         get {
             return _editEnabled
+        }
+    }
+
+    var image: UIImage {
+        get {
+            if let image = imageView.imageView.image {
+                return image
+            }
+            return UIImage()
         }
     }
     
@@ -78,16 +88,50 @@ class PMPhotoHeaderView: UIView {
             imageView.frame = bounds
             gridMask.frame = bounds
         }
+        if alwaysShowGrid {
+            gridMask.alpha = 1
+        }
     }
     
-    func setImage(image: UIImage) {
-        imageView.setImage(image)
+    func setImage(image: UIImage, scrollToRect: CGRect) {
+        imageView.setImage(image, scrollToRect: scrollToRect)
     }
     
     func tap(tap: UITapGestureRecognizer) {
         if let tap = tapAction {
             tap(view: self)
         }
+    }
+    
+    func rotate(angle: CGFloat, closeWise: Bool) {
+        currentAngle = angle
+        UIView.animateWithDuration(0.12, animations: {
+            self.transform = CGAffineTransformMakeRotation(angle)
+        }) { (com: Bool) in
+            
+        }
+    }
+    
+    func cropImageAffterEdit() -> UIImage {
+        var imageRect = CGRectZero
+        let ratio = image.size.width/image.size.height
+        if ratio > 1 {
+            var x = fmax(imageView.contentOffset.x, 0)
+            x = x/imageView.contentSize.width * image.size.width
+            imageRect = CGRectMake(x, 0, image.size.height, image.size.height)
+        }else if ratio < 1 {
+            var y = fmax(imageView.contentOffset.y, 0)
+            y = y/imageView.contentSize.height * image.size.height
+            imageRect = CGRectMake(0, y, image.size.width, image.size.width)
+        }
+        // Crop
+        var croppedImage = PMImageManger.cropImageToRect(self.image, toRect: imageRect)
+        // Rotate
+        let imageOrientation = PMImageManger.imageOrientationFromDegress(currentAngle)
+        if imageOrientation != .Up {
+            croppedImage = UIImage.init(CGImage: croppedImage.CGImage!, scale: croppedImage.scale, orientation: imageOrientation)
+        }
+        return croppedImage
     }
     
     func scrollViewDidZoom(scrollView: UIScrollView) {

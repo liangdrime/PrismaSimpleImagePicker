@@ -14,7 +14,7 @@ class PMPhotoGridView: UIView {
     var lineOffset: CGFloat = (1.0/UIScreen.mainScreen().scale)/2
     let screenScale: CGFloat = UIScreen.mainScreen().scale
     var lineBgWidth: CGFloat = 5
-    var lineColor: UIColor = UIColor.init(white: 1, alpha: 0.85)
+    var lineColor: UIColor = UIColor.init(white: 1.0, alpha: 0.45)
     var lineBgColor: UIColor = UIColor.init(white: 0.65, alpha: 0.07)
     
 
