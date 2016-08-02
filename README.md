@@ -4,7 +4,7 @@
 Custom camera, image picker ,image editor and the interface just like Prisma's style.
 
 
-![Icon](https://github.com/Roylee-ML/PrismaSimpleImagePicker/blob/master/ScreenShots/prisma.png)
+![Logo](https://github.com/Roylee-ML/PrismaSimpleImagePicker/blob/master/ScreenShots/logo.png)
 
 
 # Overview
