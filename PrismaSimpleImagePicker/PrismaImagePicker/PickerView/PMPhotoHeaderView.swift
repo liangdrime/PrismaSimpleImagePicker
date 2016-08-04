@@ -114,17 +114,15 @@ class PMPhotoHeaderView: UIView {
     }
     
     func cropImageAffterEdit() -> UIImage {
+        // Get the rect
         var imageRect = CGRectZero
-        let ratio = image.size.width/image.size.height
-        if ratio > 1 {
-            var x = fmax(imageView.contentOffset.x, 0)
-            x = x/imageView.contentSize.width * image.size.width
-            imageRect = CGRectMake(x, 0, image.size.height, image.size.height)
-        }else if ratio < 1 {
-            var y = fmax(imageView.contentOffset.y, 0)
-            y = y/imageView.contentSize.height * image.size.height
-            imageRect = CGRectMake(0, y, image.size.width, image.size.width)
-        }
+        let ratio = image.size.width/imageView.contentSize.width
+        var x = fmax(imageView.contentOffset.x, 0)
+        var y = fmax(imageView.contentOffset.y, 0)
+        x = x/imageView.contentSize.width * image.size.width
+        y = y/imageView.contentSize.height * image.size.height
+        imageRect = CGRectMake(x, y, bounds.size.width * ratio, bounds.size.height * ratio)
+        
         // Crop
         var croppedImage = PMImageManger.cropImageToRect(self.image, toRect: imageRect)
         // Rotate

@@ -237,7 +237,7 @@
                                     <constraint firstAttribute="height" constant="30" id="IDd-PT-dA4"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="default">
                                     <mask key="constraints">
@@ -345,7 +345,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ELX-Yp-yde" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1657.5" y="291"/>
+            <point key="canvasLocation" x="321" y="959"/>
         </scene>
         <!--Image Process Controller-->
         <scene sceneID="DNT-9U-dAJ">
@@ -434,13 +434,13 @@
                                                             <exclude reference="j1g-JB-tUZ"/>
                                                         </mask>
                                                         <mask key="constraints">
+                                                            <exclude reference="Oiq-rm-u4T"/>
+                                                            <exclude reference="Qr7-NX-DX4"/>
+                                                            <exclude reference="gpV-bb-cfL"/>
                                                             <exclude reference="UYf-eR-b2K"/>
                                                             <exclude reference="VcI-qi-CXU"/>
                                                             <exclude reference="cfg-JL-Uc5"/>
                                                             <exclude reference="hMt-4C-Frm"/>
-                                                            <exclude reference="Oiq-rm-u4T"/>
-                                                            <exclude reference="Qr7-NX-DX4"/>
-                                                            <exclude reference="gpV-bb-cfL"/>
                                                         </mask>
                                                     </variation>
                                                     <variation key="widthClass=compact">
@@ -449,13 +449,13 @@
                                                             <include reference="j1g-JB-tUZ"/>
                                                         </mask>
                                                         <mask key="constraints">
+                                                            <include reference="Oiq-rm-u4T"/>
+                                                            <include reference="Qr7-NX-DX4"/>
+                                                            <include reference="gpV-bb-cfL"/>
                                                             <include reference="UYf-eR-b2K"/>
                                                             <include reference="VcI-qi-CXU"/>
                                                             <include reference="cfg-JL-Uc5"/>
                                                             <include reference="hMt-4C-Frm"/>
-                                                            <include reference="Oiq-rm-u4T"/>
-                                                            <include reference="Qr7-NX-DX4"/>
-                                                            <include reference="gpV-bb-cfL"/>
                                                         </mask>
                                                     </variation>
                                                 </view>
@@ -575,7 +575,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ntx-pe-FfO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2314.5" y="291"/>
+            <point key="canvasLocation" x="988.5" y="965"/>
         </scene>
         <!--Root View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -652,7 +652,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-384" y="291"/>
+            <point key="canvasLocation" x="-366" y="687"/>
         </scene>
     </scenes>
     <resources>

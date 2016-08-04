@@ -38,6 +38,8 @@
 		7D56B61F1D44E203009224A5 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D56B61E1D44E203009224A5 /* AVFoundation.framework */; };
 		7D56B6211D44E209009224A5 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D56B6201D44E209009224A5 /* AssetsLibrary.framework */; };
 		7D56B6231D450A42009224A5 /* Photos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D56B6221D450A42009224A5 /* Photos.framework */; };
+		7D5915101D50445E00970B34 /* PMImageSettingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D59150E1D50445E00970B34 /* PMImageSettingController.swift */; };
+		7D5915111D50445E00970B34 /* PMImageSettingController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7D59150F1D50445E00970B34 /* PMImageSettingController.xib */; };
 		7D605FDA1D4B21E20053F93C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7D605FD81D4B21E20053F93C /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
@@ -87,6 +89,8 @@
 		7D56B61E1D44E203009224A5 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		7D56B6201D44E209009224A5 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		7D56B6221D450A42009224A5 /* Photos.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Photos.framework; path = System/Library/Frameworks/Photos.framework; sourceTree = SDKROOT; };
+		7D59150E1D50445E00970B34 /* PMImageSettingController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PMImageSettingController.swift; sourceTree = "<group>"; };
+		7D59150F1D50445E00970B34 /* PMImageSettingController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PMImageSettingController.xib; sourceTree = "<group>"; };
 		7D605FD91D4B21E20053F93C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -172,6 +176,8 @@
 				7D53D9E91D4F4F6500872658 /* PNImageCaptureController.swift */,
 				7D53D9E11D4F4F6500872658 /* PMImageEditController.swift */,
 				7D53D9E31D4F4F6500872658 /* PMImageProcessController.swift */,
+				7D59150E1D50445E00970B34 /* PMImageSettingController.swift */,
+				7D59150F1D50445E00970B34 /* PMImageSettingController.xib */,
 				7D53D9E51D4F4F6500872658 /* PMImageProtocol.swift */,
 			);
 			path = PrismaPhotoCapture;
@@ -328,6 +334,7 @@
 				7D56B5E91D449BA1009224A5 /* Assets.xcassets in Resources */,
 				7D605FDA1D4B21E20053F93C /* LaunchScreen.storyboard in Resources */,
 				7D56B5E71D449BA1009224A5 /* Main.storyboard in Resources */,
+				7D5915111D50445E00970B34 /* PMImageSettingController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -357,6 +364,7 @@
 				7D53D9F71D4F4F6500872658 /* PMImageGroupCell.swift in Sources */,
 				7D53DA071D4F4F6500872658 /* PMCaptureButtom.swift in Sources */,
 				7D53D9F51D4F4F6500872658 /* PMImageManger.swift in Sources */,
+				7D5915101D50445E00970B34 /* PMImageSettingController.swift in Sources */,
 				7D53DA091D4F4F6500872658 /* PMStyleHeaderView.swift in Sources */,
 				7D53DA051D4F4F6500872658 /* PNImageCaptureController.swift in Sources */,
 				7D53D9F11D4F4F6500872658 /* PMImagePickerController.swift in Sources */,
