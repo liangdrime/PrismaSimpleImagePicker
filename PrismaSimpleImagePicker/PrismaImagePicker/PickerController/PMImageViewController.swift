@@ -394,7 +394,9 @@ class PMImageViewController: UIViewController, UICollectionViewDelegate, UIColle
                     headerTopConstraints.constant += tramslation.y;
                     
                     if headerTopConstraints.constant > -(screenSize.width - constParams.headerTopInset) {
+                        contentOffset.y = fmin(contentOffset.y, albumCollection.contentSize.height - albumCollection.bounds.size.height)
                         albumCollection!.contentOffset = contentOffset
+                        print("contentOffset is \(contentOffset.y)")
                         panGestureRecognizer.setTranslation(CGPointMake(tramslation.x, 0), inView: view)
                     }else {
                         headerTopConstraints.constant = -(screenSize.width - constParams.headerTopInset)

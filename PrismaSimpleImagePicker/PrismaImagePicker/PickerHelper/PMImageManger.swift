@@ -183,13 +183,13 @@ class PMImageManger: NSObject {
         case 0:
             orientation = .Up
             break
-        case 1:
+        case 1, -3:
             orientation = .Right
             break
-        case 2:
+        case 2, -2:
             orientation = .Down
             break
-        case 3:
+        case 3, -1:
             orientation = .Left
             break
         default:

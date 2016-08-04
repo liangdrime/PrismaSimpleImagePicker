@@ -105,7 +105,6 @@ class PMPhotoHeaderView: UIView {
     
     func rotate(angle: CGFloat, closeWise: Bool) {
         currentAngle = angle
-        print("current angle is \(currentAngle)")
         UIView.animateWithDuration(0.12, animations: {
             self.transform = CGAffineTransformMakeRotation(angle)
         }) { (com: Bool) in
