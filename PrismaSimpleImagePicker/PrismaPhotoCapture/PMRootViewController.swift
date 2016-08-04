@@ -23,7 +23,7 @@ class PMRootViewController: UIViewController, PMImageProtocol {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        captureHeaderView.backgroundColor = UIColor.whiteColor()
+        captureHeaderView.backgroundColor = UIColor.blackColor()
         captureHeaderView.layer.masksToBounds = true
         
         // Add navigation
@@ -109,6 +109,8 @@ class PMRootViewController: UIViewController, PMImageProtocol {
         let duration = animated ?0.25:0.0
         switch state {
         case .Preivew:
+            captureHeaderView.backgroundColor = UIColor.blackColor()
+            
             // Reset the angle
             imageAngle = 0
             // Hidden other header
@@ -130,6 +132,8 @@ class PMRootViewController: UIViewController, PMImageProtocol {
             })
             break
         case .EditImage:
+            captureHeaderView.backgroundColor = UIColor.whiteColor()
+            
             if self.state == .Preivew {
                 // Go edit vc and add edit header
                 let photoHeaderView = PMPhotoHeaderView.init(frame: captureHeaderView.bounds)
@@ -144,11 +148,6 @@ class PMRootViewController: UIViewController, PMImageProtocol {
                     toRect.origin.y = toRect.origin.y * (photoHeaderView.imageView.contentSize.height/(image?.size.height)!)
                 }
                 
-//                if image?.size.width > image?.size.height {
-//                    toRect.origin.x = toRect.origin.x * photoHeaderView.bounds.size.height/(image?.size.height)!
-//                }else {
-//                    toRect.origin.y = toRect.origin.y * photoHeaderView.bounds.size.width/(image?.size.width)!
-//                }
                 toRect.size = photoHeaderView.bounds.size
                 photoHeaderView.setImage(image!, scrollToRect: toRect, zoomScale:zoomScale)
                 
@@ -193,10 +192,8 @@ class PMRootViewController: UIViewController, PMImageProtocol {
         
         if clockwise {
             imageAngle += CGFloat(M_PI/2)
-            print("++clokwise.....")
         }else {
             imageAngle -= CGFloat(M_PI/2)
-            print("--clokwise.....")
         }
         photoHeaderView?.rotate(imageAngle, closeWise: clockwise)
     }

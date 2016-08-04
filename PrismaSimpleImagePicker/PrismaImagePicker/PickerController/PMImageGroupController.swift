@@ -42,6 +42,9 @@ class PMImageGroupController: UIViewController, UITableViewDelegate, UITableView
         automaticallyAdjustsScrollViewInsets = false
 
         tableView.registerNib(UINib.init(nibName: "PMImageGroupCell", bundle: nil), forCellReuseIdentifier: "kGroupCellIdfy")
+        var contentInset = tableView.contentInset
+        contentInset.bottom = 44
+        tableView.contentInset = contentInset
         
         // Top line
         let mainScreen: UIScreen = UIScreen.mainScreen()

@@ -41,9 +41,9 @@ class PNImageCaptureController: UIViewController, PMImagePickerControllerDelegat
         PMImageManger.captureAuthorization { (canCapture: Bool) in
             if canCapture {
                 self.initAVCapture()
-                //                self.session.startRunning()
+                self.session.startRunning()
             }else {
-                //                self.session.stopRunning()
+                self.session.stopRunning()
             }
         }
         
