@@ -384,12 +384,13 @@
                                                 <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9kt-Bg-jZz">
                                                     <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                                     <subviews>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photos" translatesAutoresizingMaskIntoConstraints="NO" id="Uud-7X-aXY">
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Uud-7X-aXY">
                                                             <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                                            <color key="backgroundColor" red="0.96862745098039216" green="0.96862745098039216" blue="0.96862745098039216" alpha="1" colorSpace="calibratedRGB"/>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Style" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j1g-JB-tUZ">
                                                             <rect key="frame" x="-42" y="-21" width="42" height="21"/>
-                                                            <color key="backgroundColor" white="0.0" alpha="0.5" colorSpace="calibratedWhite"/>
+                                                            <color key="backgroundColor" white="0.0" alpha="0.80062288851351349" colorSpace="calibratedWhite"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="30" id="W55-1o-Roo">
                                                                     <variation key="widthClass=compact" constant="30"/>
@@ -412,13 +413,34 @@
                                                                 </mask>
                                                             </variation>
                                                         </label>
+                                                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="ZR8-Vc-MmT">
+                                                            <rect key="frame" x="-10" y="-10" width="20" height="20"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="20" id="BHi-8N-10d"/>
+                                                                <constraint firstAttribute="height" constant="20" id="s8O-hf-bzQ"/>
+                                                            </constraints>
+                                                            <variation key="default">
+                                                                <mask key="constraints">
+                                                                    <exclude reference="BHi-8N-10d"/>
+                                                                    <exclude reference="s8O-hf-bzQ"/>
+                                                                </mask>
+                                                            </variation>
+                                                            <variation key="widthClass=compact">
+                                                                <mask key="constraints">
+                                                                    <include reference="BHi-8N-10d"/>
+                                                                    <include reference="s8O-hf-bzQ"/>
+                                                                </mask>
+                                                            </variation>
+                                                        </activityIndicatorView>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
+                                                        <constraint firstItem="ZR8-Vc-MmT" firstAttribute="centerX" secondItem="9kt-Bg-jZz" secondAttribute="centerX" id="GId-rJ-cIS"/>
                                                         <constraint firstItem="j1g-JB-tUZ" firstAttribute="leading" secondItem="9kt-Bg-jZz" secondAttribute="leading" id="Oiq-rm-u4T"/>
                                                         <constraint firstAttribute="bottom" secondItem="j1g-JB-tUZ" secondAttribute="bottom" id="Qr7-NX-DX4"/>
                                                         <constraint firstItem="Uud-7X-aXY" firstAttribute="top" secondItem="9kt-Bg-jZz" secondAttribute="top" id="UYf-eR-b2K"/>
                                                         <constraint firstAttribute="bottom" secondItem="Uud-7X-aXY" secondAttribute="bottom" id="VcI-qi-CXU"/>
+                                                        <constraint firstItem="ZR8-Vc-MmT" firstAttribute="centerY" secondItem="9kt-Bg-jZz" secondAttribute="centerY" id="Wue-zm-PrZ"/>
                                                         <constraint firstItem="Uud-7X-aXY" firstAttribute="leading" secondItem="9kt-Bg-jZz" secondAttribute="leading" id="cfg-JL-Uc5"/>
                                                         <constraint firstAttribute="trailing" secondItem="j1g-JB-tUZ" secondAttribute="trailing" id="gpV-bb-cfL"/>
                                                         <constraint firstAttribute="trailing" secondItem="Uud-7X-aXY" secondAttribute="trailing" id="hMt-4C-Frm"/>
@@ -432,8 +454,11 @@
                                                         <mask key="subviews">
                                                             <exclude reference="Uud-7X-aXY"/>
                                                             <exclude reference="j1g-JB-tUZ"/>
+                                                            <exclude reference="ZR8-Vc-MmT"/>
                                                         </mask>
                                                         <mask key="constraints">
+                                                            <exclude reference="GId-rJ-cIS"/>
+                                                            <exclude reference="Wue-zm-PrZ"/>
                                                             <exclude reference="Oiq-rm-u4T"/>
                                                             <exclude reference="Qr7-NX-DX4"/>
                                                             <exclude reference="gpV-bb-cfL"/>
@@ -447,8 +472,11 @@
                                                         <mask key="subviews">
                                                             <include reference="Uud-7X-aXY"/>
                                                             <include reference="j1g-JB-tUZ"/>
+                                                            <include reference="ZR8-Vc-MmT"/>
                                                         </mask>
                                                         <mask key="constraints">
+                                                            <include reference="GId-rJ-cIS"/>
+                                                            <include reference="Wue-zm-PrZ"/>
                                                             <include reference="Oiq-rm-u4T"/>
                                                             <include reference="Qr7-NX-DX4"/>
                                                             <include reference="gpV-bb-cfL"/>
@@ -492,6 +520,7 @@
                                             </mask>
                                         </variation>
                                         <connections>
+                                            <outlet property="indicator" destination="ZR8-Vc-MmT" id="f30-ZE-jwn"/>
                                             <outlet property="styleImageView" destination="Uud-7X-aXY" id="KGm-1U-Wyr"/>
                                             <outlet property="styleNameLabel" destination="j1g-JB-tUZ" id="PqX-Bh-Jy9"/>
                                             <outlet property="view" destination="9kt-Bg-jZz" id="dMT-Ce-q6o"/>

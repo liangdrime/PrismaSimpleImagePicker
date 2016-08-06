@@ -37,7 +37,9 @@ class PMImageManger: NSObject {
         switch captureStatus {
         case.NotDetermined:
             AVCaptureDevice.requestAccessForMediaType(AVMediaTypeVideo, completionHandler: { (granted:  Bool) -> Void in
-                shouldCapture(granted)
+                runOnMainQuene({ () -> Void in
+                    shouldCapture(granted)
+                })
             })
             break
         case.Authorized:
@@ -46,6 +48,21 @@ class PMImageManger: NSObject {
         default:
             shouldCapture(false)
             break
+        }
+    }
+    
+    // Run on main quene
+    class func runOnMainQuene(callBack: (()->Void)?) {
+        if NSThread.currentThread().isMainThread {
+            if let call = callBack {
+                call()
+            }
+        }else {
+            dispatch_async(dispatch_get_main_queue(), {
+                if let call = callBack {
+                    call()
+                }
+            })
         }
     }
     
@@ -198,6 +215,7 @@ class PMImageManger: NSObject {
         }
         return orientation
     }
+    
 }
 
 // MARK: UIImage ectension

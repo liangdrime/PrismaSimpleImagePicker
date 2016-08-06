@@ -98,7 +98,7 @@ class PMRootViewController: UIViewController, PMImageProtocol {
     // Set the AVCaptureVideoPreviewLayer
     func setAVCapturePreviewLayer(previewLayer: AVCaptureVideoPreviewLayer) {
         self.previewLayer = previewLayer
-        captureHeaderView.layer.insertSublayer(previewLayer, below: photoHeaderView?.layer)
+        captureHeaderView.layer.insertSublayer(previewLayer, atIndex: 0)
     }
     
     // Change state

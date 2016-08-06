@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7D0375641D54CFCF00B39B7D /* PMImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D0375631D54CFCF00B39B7D /* PMImageDownloader.swift */; };
+		7D0375661D54CFE400B39B7D /* PMImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D0375651D54CFE400B39B7D /* PMImageCache.swift */; };
+		7D535D5D1D559FC6002CF823 /* PMImageSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D535D5C1D559FC6002CF823 /* PMImageSession.swift */; };
 		7D53D9F01D4F4F6500872658 /* PMImageGroupController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7D53D9D01D4F4F6500872658 /* PMImageGroupController.xib */; };
 		7D53D9F11D4F4F6500872658 /* PMImagePickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D53D9D11D4F4F6500872658 /* PMImagePickerController.swift */; };
 		7D53D9F31D4F4F6500872658 /* PMImageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7D53D9D31D4F4F6500872658 /* PMImageViewController.xib */; };
@@ -41,6 +44,7 @@
 		7D5915101D50445E00970B34 /* PMImageSettingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D59150E1D50445E00970B34 /* PMImageSettingController.swift */; };
 		7D5915111D50445E00970B34 /* PMImageSettingController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7D59150F1D50445E00970B34 /* PMImageSettingController.xib */; };
 		7D605FDA1D4B21E20053F93C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7D605FD81D4B21E20053F93C /* LaunchScreen.storyboard */; };
+		7DDFD6601D54998000DC2905 /* styles.json in Resources */ = {isa = PBXBuildFile; fileRef = 7DDFD65F1D54998000DC2905 /* styles.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +58,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7D0375631D54CFCF00B39B7D /* PMImageDownloader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PMImageDownloader.swift; sourceTree = "<group>"; };
+		7D0375651D54CFE400B39B7D /* PMImageCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PMImageCache.swift; sourceTree = "<group>"; };
+		7D535D5C1D559FC6002CF823 /* PMImageSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PMImageSession.swift; sourceTree = "<group>"; };
 		7D53D9D01D4F4F6500872658 /* PMImageGroupController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PMImageGroupController.xib; sourceTree = "<group>"; };
 		7D53D9D11D4F4F6500872658 /* PMImagePickerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PMImagePickerController.swift; sourceTree = "<group>"; };
 		7D53D9D31D4F4F6500872658 /* PMImageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PMImageViewController.xib; sourceTree = "<group>"; };
@@ -92,6 +99,7 @@
 		7D59150E1D50445E00970B34 /* PMImageSettingController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PMImageSettingController.swift; sourceTree = "<group>"; };
 		7D59150F1D50445E00970B34 /* PMImageSettingController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PMImageSettingController.xib; sourceTree = "<group>"; };
 		7D605FD91D4B21E20053F93C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		7DDFD65F1D54998000DC2905 /* styles.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = styles.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +123,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7D0375621D54CFB100B39B7D /* PrismaWebImage */ = {
+			isa = PBXGroup;
+			children = (
+				7D0375631D54CFCF00B39B7D /* PMImageDownloader.swift */,
+				7D0375651D54CFE400B39B7D /* PMImageCache.swift */,
+				7D535D5C1D559FC6002CF823 /* PMImageSession.swift */,
+			);
+			path = PrismaWebImage;
+			sourceTree = "<group>";
+		};
 		7D53D9CD1D4F4F6500872658 /* PrismaImagePicker */ = {
 			isa = PBXGroup;
 			children = (
@@ -218,11 +236,13 @@
 				7D53D9E01D4F4F6500872658 /* PrismaPhotoCapture */,
 				7D53D9CD1D4F4F6500872658 /* PrismaImagePicker */,
 				7D53D9EB1D4F4F6500872658 /* PrismaViews */,
+				7D0375621D54CFB100B39B7D /* PrismaWebImage */,
 				7D56B5E11D449BA1009224A5 /* AppDelegate.swift */,
 				7D56B5E31D449BA1009224A5 /* ViewController.swift */,
 				7D56B5E51D449BA1009224A5 /* Main.storyboard */,
 				7D56B5E81D449BA1009224A5 /* Assets.xcassets */,
 				7D605FD81D4B21E20053F93C /* LaunchScreen.storyboard */,
+				7DDFD65F1D54998000DC2905 /* styles.json */,
 				7D56B5ED1D449BA1009224A5 /* Info.plist */,
 			);
 			path = PrismaSimpleImagePicker;
@@ -335,6 +355,7 @@
 				7D605FDA1D4B21E20053F93C /* LaunchScreen.storyboard in Resources */,
 				7D56B5E71D449BA1009224A5 /* Main.storyboard in Resources */,
 				7D5915111D50445E00970B34 /* PMImageSettingController.xib in Resources */,
+				7DDFD6601D54998000DC2905 /* styles.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -360,6 +381,7 @@
 				7D53DA011D4F4F6500872658 /* PMImageProtocol.swift in Sources */,
 				7D53D9FB1D4F4F6500872658 /* PMPhotoHeaderView.swift in Sources */,
 				7D56B5E41D449BA1009224A5 /* ViewController.swift in Sources */,
+				7D0375661D54CFE400B39B7D /* PMImageCache.swift in Sources */,
 				7D53D9F41D4F4F6500872658 /* FMDeviceOrientation.swift in Sources */,
 				7D53D9F71D4F4F6500872658 /* PMImageGroupCell.swift in Sources */,
 				7D53DA071D4F4F6500872658 /* PMCaptureButtom.swift in Sources */,
@@ -369,11 +391,13 @@
 				7D53DA051D4F4F6500872658 /* PNImageCaptureController.swift in Sources */,
 				7D53D9F11D4F4F6500872658 /* PMImagePickerController.swift in Sources */,
 				7D56B5E21D449BA1009224A5 /* AppDelegate.swift in Sources */,
+				7D0375641D54CFCF00B39B7D /* PMImageDownloader.swift in Sources */,
 				7D53D9FF1D4F4F6500872658 /* PMImageProcessController.swift in Sources */,
 				7D53D9F91D4F4F6500872658 /* PMPhotoGridView.swift in Sources */,
 				7D53D9FC1D4F4F6500872658 /* PMPickerTitleButton.swift in Sources */,
 				7D53DA021D4F4F6500872658 /* PMNavigationController.swift in Sources */,
 				7D53DA0E1D4F50FC00872658 /* PMImageGroupController.swift in Sources */,
+				7D535D5D1D559FC6002CF823 /* PMImageSession.swift in Sources */,
 				7D53D9FA1D4F4F6500872658 /* PMPhotoHeaderItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -503,10 +527,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = PrismaSimpleImagePicker/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.ibireme.huangpin.YYKitDemo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mengliang.PrismaSimpleImagePicker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -515,10 +540,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				INFOPLIST_FILE = PrismaSimpleImagePicker/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.ibireme.huangpin.YYKitDemo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mengliang.PrismaSimpleImagePicker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

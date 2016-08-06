@@ -13,6 +13,8 @@ class PMImageProcessController: UIViewController, UICollectionViewDelegate, UICo
     
     @IBOutlet weak var navigationBar: UINavigationBar!
     @IBOutlet weak var stylesCollectionView: UICollectionView!
+    var styles: [AnyObject]?
+    
     var fromCapture: Bool = false
     
     
@@ -24,6 +26,17 @@ class PMImageProcessController: UIViewController, UICollectionViewDelegate, UICo
         
         let navigationController = self.navigationController as? PMNavigationController
         stylesCollectionView.panGestureRecognizer.requireGestureRecognizerToFail(navigationController!.panGestureRecognizer)
+        
+        styles = getStyles() as? [AnyObject]
+    }
+    
+    func getStyles() -> AnyObject {
+        let dataPath = NSBundle.mainBundle().pathForResource("", ofType: "json")
+        let data = NSData.init(contentsOfFile: dataPath!)
+        let dataDic: AnyObject = try! NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers)
+
+        let styles: AnyObject = dataDic.objectForKey("styles")!
+        return styles
     }
     
     @IBAction func back(sender: AnyObject) {
@@ -44,6 +57,10 @@ class PMImageProcessController: UIViewController, UICollectionViewDelegate, UICo
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("styleCell", forIndexPath: indexPath) as? PMStyleCell
+        
+        let style: AnyObject = styles![indexPath.row]
+        cell?.loadImage(style)
+        
         return cell!
     }
     
