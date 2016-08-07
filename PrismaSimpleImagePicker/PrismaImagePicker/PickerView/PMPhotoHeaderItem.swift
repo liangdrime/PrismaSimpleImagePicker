@@ -18,9 +18,9 @@ class PMPhotoHeaderItem: UIScrollView, UIScrollViewDelegate {
     
     override var frame: CGRect {
         didSet {
+            bounds.origin = CGPointZero  // reset zero origin to fit the adjust effect of scroll view
             imageContainerView.frame = bounds
             imageView.frame = imageContainerView.bounds
-            contentSize = bounds.size
             resetSubViews()
         }
     }
@@ -178,7 +178,7 @@ class PMPhotoHeaderItem: UIScrollView, UIScrollViewDelegate {
         }
     }
     
-
+    
     /*
     // Only override drawRect: if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.

@@ -10,8 +10,29 @@ import UIKit
 import Photos
 
 @objc protocol PMImagePickerControllerDelegate: NSObjectProtocol {
+    /**
+     Call when tap `Use` button of the picker view controller
+     
+     - parameter picker: The view controller of class PMImagePickerController
+     - parameter image:  An cropped image which displayed in the top header after edit
+     */
     optional func imagePickerController(picker: PMImagePickerController, didFinishPickingImage image: UIImage)
+    
+    /**
+     Call when tap `Use` button of the picker view controller
+     
+     - parameter picker:        The view controller of class PMImagePickerController
+     - parameter originalImage: An original image which displayed in the top header
+     - parameter selectedRect:  A rect displayed of the header
+     - parameter zoomScale:     ZoomScale of the image
+     */
     optional func imagePickerController(picker: PMImagePickerController, didFinishPickingImage originalImage: UIImage, selectedRect: CGRect, zoomScale:CGFloat)
+    
+    /**
+     Call when tap `Cancel` button of the picker view controller
+     
+     - parameter picker: The view controller of class PMImagePickerController
+     */
     optional func imagePickerControllerDidCancel(picker: PMImagePickerController)
 }
 

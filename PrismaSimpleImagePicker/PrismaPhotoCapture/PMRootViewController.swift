@@ -51,7 +51,9 @@ class PMRootViewController: UIViewController, PMImageProtocol {
     
     // Tap header to focus
     func tapHeader(tap: UITapGestureRecognizer) {
-        
+        guard state == .Preivew else {
+            return
+        }
         singleTapHeaderAction(tap: tap)
     }
     
