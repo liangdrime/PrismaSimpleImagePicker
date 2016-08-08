@@ -49,7 +49,7 @@ There is one thing we need to pay attention when we custom a camera, it's the im
 <br>
 **Finally**, we could just use the image picker in foder `PrismaImagePicker`, this is an independent function for developer jsut want to have a image picker with Prisma's syle.
 
-More principles of introduction, please view my [blog](http://error408.com/2016/08/03/Prisma-%E6%88%90%E5%8A%9F%E7%9A%84%E4%B8%8D%E5%8F%AA%E6%98%AF%E8%89%BA%E6%9C%AF/)(*Only Chinese supported*)
+**More details, please view my [blog](http://error408.com/2016/08/03/Prisma-%E6%88%90%E5%8A%9F%E7%9A%84%E4%B8%8D%E5%8F%AA%E6%98%AF%E8%89%BA%E6%9C%AF/)(*Only Chinese supported*)**
 
 <br>
 ### How to use PrismaImagePicker?
