@@ -99,6 +99,9 @@ class PMPhotoHeaderItem: UIScrollView, UIScrollViewDelegate {
     }
     
     private func zoomOutView(tap: UITapGestureRecognizer) {
+        guard zoomScale > 1 else {
+            return
+        }
         zoomScale = 1
         resetSubViews()
     }

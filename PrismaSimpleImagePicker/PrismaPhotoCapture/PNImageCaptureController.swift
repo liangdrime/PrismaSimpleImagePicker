@@ -184,7 +184,7 @@ class PNImageCaptureController: UIViewController, PMImagePickerControllerDelegat
                 let library = ALAssetsLibrary()
                 if self.isUsingFrontFacingCamera {
                     let attachments = CMCopyDictionaryOfAttachments(kCFAllocatorDefault,imageDataSampleBuffer,kCMAttachmentMode_ShouldPropagate)
-                    //            let attachments = CMGetAttachment(imageDataSampleBuffer, kCGImagePropertyExifDictionary, nil)
+//                    let attachments = CMGetAttachment(imageDataSampleBuffer, kCGImagePropertyExifDictionary, nil)
                     library.writeImageToSavedPhotosAlbum(image.CGImage!, metadata: attachments as? [NSObject:AnyObject] , completionBlock: { (url: NSURL!, error: NSError!) in
                         
                     })
