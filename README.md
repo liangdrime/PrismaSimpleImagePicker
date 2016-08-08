@@ -124,6 +124,8 @@ Create and use the iamge picker
 <br>
 **Custom your own album kind**
 
-The default album is `Camera`、`Favorites`、`ScreenShots` and `User photos`, and all the operations of image is in `PMImageManger.swift`. If you want change the kind of album, you could change the parameter `PHAssetCollectionType` and `PHAssetCollectionSubtype` in function `class func photoLibrarys() -> [PHAssetCollection]`
+The default album is `Camera`、`Favorites`、`ScreenShots` and `User photos`, and all the operations of image is in `PMImageManger.swift`. 
+
+If you want change the kind of album, you could change the parameters `PHAssetCollectionType` and `PHAssetCollectionSubtype` in function `class func photoLibrarys() -> [PHAssetCollection]`
 
 
