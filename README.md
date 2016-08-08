@@ -54,7 +54,6 @@ More principles of introduction, please view my [blog](http://error408.com/2016/
 <br>
 ### How to use PrismaImagePicker?
 
-<br>
 * Create an object of class `PMImagePickerController`, and just present it from your own view controller.
 * If you just have the data source before, you can set the data source of `PMImagePickerController`, so it can be fast because without read the photo album.
 * Confirm the protocol `PMImagePickerControllerDelegate`, and implement the delegate used.
