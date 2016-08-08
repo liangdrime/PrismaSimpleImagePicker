@@ -37,7 +37,7 @@ This is build with Storyboard and xib, just because the Prisma is also used Stor
 > * **AVCaptureStillImageOutput** Function for image stream output
 > * **AVCaptureVideoPreviewLayer** Video preview layer, used to display the scene of the camera in real time
 
-There is one thing we need to pay attention when we custom a camera, it's the image's orientation. Because the normal orientation of iPhone camera is lanscape right(Home button on the right), so the image orientation is different from our expected result. Below is a comparison.
+There is one thing we need to pay attention when we custom a camera, it's the image's orientation. Because the normal orientation of iPhone camera is lanscape left(Home button on the right), so the image orientation is different from our expected result. Below is a comparison.
 
 ![Camera position](https://github.com/Roylee-ML/PrismaSimpleImagePicker/blob/master/ScreenShots/possion.png) 
 
