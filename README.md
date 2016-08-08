@@ -19,14 +19,17 @@ Custom camera, image picker ,image editor and the interface just like Prisma's s
 
 ### This is just a client function copy of Prisma, not a pod solution
 
-Prisma is sucessful photo edit APP, but it's success is not just art. And the details of the Prisma is also very good. So, I try to reproduce the client function of Prisma use Swift, and the result is this project.
+<br>
+Prisma is a sucessful APP of photo editing, but it's success is more than just art. And the details of the Prisma is also very good. So, I try to reproduce the client function of Prisma use Swift, and the result is this project.
 
 This is build with Storyboard and xib, just because the Prisma is also used Storyboard and xib. The follow is the struct:
 
 ![Struct](https://github.com/Roylee-ML/PrismaSimpleImagePicker/blob/master/ScreenShots/prismanib.png)
 
+<br>
 ### What is the use of this project?
 
+<br>
 **Firstly**, we can learn how to custom camera use framework AVFoundation.
 
 > * **AVCaptureSession**  A session to manage camera, responsible for the video image management function
@@ -38,18 +41,21 @@ There is one thing we need to pay attention when we custom a camera, it's the im
 
 ![Camera position](https://github.com/Roylee-ML/PrismaSimpleImagePicker/blob/master/ScreenShots/possion.png) 
 
-
+<br>
 **Secondly**, from this project we can learn about some kowledge of system photo album. Because just support iOS8 above, so I use framework Photos to complete photo select, not the AssetsLibrary frmawork Prisma used. And below is the frameworks Prisma used.
 
 ![Frameworks](https://github.com/Roylee-ML/PrismaSimpleImagePicker/blob/master/ScreenShots/frameworks.png)
 
+<br>
 **Finally**, we could just use the image picker in foder `PrismaImagePicker`, this is an independent function for developer jsut want to have a image picker with Prisma's syle.
 
 More principles of introduction, please view my [blog](http://error408.com/2016/08/03/Prisma-%E6%88%90%E5%8A%9F%E7%9A%84%E4%B8%8D%E5%8F%AA%E6%98%AF%E8%89%BA%E6%9C%AF/)(*Only Chinese supported*)
 
+<br>
 ### How to use PrismaImagePicker?
 
-* Create a object of class `PMImagePickerController`, and just present it from your own view controller.
+<br>
+* Create an object of class `PMImagePickerController`, and just present it from your own view controller.
 * If you just have the data source before, you can set the data source of `PMImagePickerController`, so it can be fast because without read the photo album.
 * Confirm the protocol `PMImagePickerControllerDelegate`, and implement the delegate used.
 
