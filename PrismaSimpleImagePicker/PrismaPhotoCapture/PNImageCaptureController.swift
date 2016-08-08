@@ -143,9 +143,9 @@ class PNImageCaptureController: UIViewController, PMImagePickerControllerDelegat
         captureButton.enabled = false
         
         let stillImageConnection = stillImageOutPut?.connectionWithMediaType(AVMediaTypeVideo)
-//        let curDeviceOrientation = UIDevice.currentDevice().orientation
-//        let avCaptureOrientation = FMDeviceOrientation.avOrientationFromDeviceOrientation(curDeviceOrientation)
-        let avCaptureOrientation = AVCaptureVideoOrientation(rawValue: UIDevice.currentDevice().orientation.rawValue)!
+        let curDeviceOrientation = UIDevice.currentDevice().orientation
+        let avCaptureOrientation = FMDeviceOrientation.avOrientationFromDeviceOrientation(curDeviceOrientation)
+//        let avCaptureOrientation = AVCaptureVideoOrientation(rawValue: UIDevice.currentDevice().orientation.rawValue)!
         if stillImageConnection!.supportsVideoOrientation {
             stillImageConnection!.videoOrientation = avCaptureOrientation
         }
