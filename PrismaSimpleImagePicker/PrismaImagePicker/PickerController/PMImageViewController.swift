@@ -36,6 +36,7 @@ class PMImageViewController: UIViewController, UICollectionViewDelegate, UIColle
     var titleButton: PMPickerTitleButton?
     let screenSize: ScreenSize = ScreenSize()
     let constParams: ConstParams = ConstParams()
+    let loadingView: UIActivityIndicatorView = UIActivityIndicatorView.init(activityIndicatorStyle: UIActivityIndicatorViewStyle.Gray)
     var photoGroups = [PHAssetCollection]?()
     var photoAssets = [PHAsset]?()
     var photos = [UIImage]()
@@ -97,7 +98,7 @@ class PMImageViewController: UIViewController, UICollectionViewDelegate, UIColle
         } else {
             titleButton?.titleLabel?.font = UIFont.boldSystemFontOfSize(17)
         }
-        titleButton?.setTitle("Title", forState: UIControlState.Normal)
+        titleButton?.setTitle("Camera", forState: UIControlState.Normal)
         titleButton?.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
         titleButton?.setTitleColor(UIColor.lightGrayColor(), forState: UIControlState.Highlighted)
         titleButton?.setTitleColor(UIColor.lightGrayColor(), forState: UIControlState.Selected)
@@ -119,30 +120,47 @@ class PMImageViewController: UIViewController, UICollectionViewDelegate, UIColle
         
         PMImageManger.photoAuthorization { (granted: Bool) in
             if granted {
-                if (self.photoGroups == nil) {
-                    self.photoGroups = PMImageManger.photoLibrarys()
-                }
+                // Start loading
+                self.loadingView.frame = self.albumCollection.bounds
+                self.loadingView.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
+                self.albumCollection.addSubview(self.loadingView)
+                self.loadingView.startAnimating()
                 
-                let group = self.photoGroups![0]
-                if (self.photoAssets == nil) {
-                    self.photoAssets = PMImageManger.photoAssetsForAlbum(group)
-                }
-                
-                PMImageManger.imageFromAsset(self.photoAssets!.first!, isOriginal: true, toSize: nil, resultHandler: { (image: UIImage?) in
-                    self.dsiplayHeader.setImage(image!, scrollToRect: CGRectZero, zoomScale:1)
-                })
-                
-                for asset: PHAsset in self.photoAssets! {
-                    PMImageManger.imageFromAsset(asset, isOriginal: false, toSize: CGSizeMake(150, 150), resultHandler: { (image: UIImage?) in
-                        self.photos.append(image!)
+                // Asynchronous get photos, avoid taking the main thread
+                dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), { 
+                    if (self.photoGroups == nil) {
+                        self.photoGroups = PMImageManger.photoLibrarys()
+                    }
+                    
+                    let group = self.photoGroups![0]
+                    if (self.photoAssets == nil) {
+                        self.photoAssets = PMImageManger.photoAssetsForAlbum(group)
+                    }
+                    
+                    PMImageManger.imageFromAsset(self.photoAssets!.first!, isOriginal: true, toSize: nil, resultHandler: { (image: UIImage?) in
+                        // Set header photo
+                        dispatch_async(dispatch_get_main_queue(), { 
+                            self.dsiplayHeader.setImage(image!, scrollToRect: CGRectZero, zoomScale:1)
+                        })
                     })
-                }
-                
-                // Title
-                self.titleButton?.setTitle(group.localizedTitle, forState: UIControlState.Normal)
-                self.titleButton?.sizeToFit()
-                // Reload data
-                self.albumCollection.reloadData()
+                    
+                    for asset: PHAsset in self.photoAssets! {
+                        PMImageManger.imageFromAsset(asset, isOriginal: false, toSize: CGSizeMake(150, 150), resultHandler: { (image: UIImage?) in
+                            self.photos.append(image!)
+                        })
+                    }
+                    
+                    dispatch_async(dispatch_get_main_queue(), {
+                        // Stop loading
+                        self.loadingView.stopAnimating()
+                        self.loadingView.removeFromSuperview()
+                        // Title
+                        self.titleButton?.setTitle(group.localizedTitle, forState: UIControlState.Normal)
+                        self.titleButton?.sizeToFit()
+                        // Reload data
+                        self.albumCollection.reloadData()
+                    })
+                })
             }
         }
     }
@@ -208,13 +226,17 @@ class PMImageViewController: UIViewController, UICollectionViewDelegate, UIColle
                     self.titleButton?.arrowStatus = status
             })
             
-            // action
+            // Dismiss action after select album.
+            
             weak var weakSelf = self
             groupVC.didSelectGroupAction = { (index: Int) in
+                
+                // Get photos
                 let groupCollection = weakSelf!.photoGroups![index]
                 weakSelf?.photoAssets = PMImageManger.photoAssetsForAlbum(groupCollection)
                 PMImageManger.imageFromAsset(weakSelf!.photoAssets!.first!, isOriginal: true, toSize: nil, resultHandler: { (image: UIImage?) in
                     if let _image = image {
+                        // Reset header photo
                         weakSelf!.dsiplayHeader.setImage(_image, scrollToRect: CGRectZero, zoomScale:1)
                     }
                 })
@@ -224,12 +246,17 @@ class PMImageViewController: UIViewController, UICollectionViewDelegate, UIColle
                         weakSelf!.photos.append(image!)
                     })
                 }
+                
+                // Reset title
+                weakSelf!.titleButton?.setTitle(groupCollection.localizedTitle, forState: UIControlState.Normal)
+                weakSelf!.titleButton?.sizeToFit()
+                // Reload data
                 weakSelf!.selectedIndex = 0
                 weakSelf!.albumCollection.reloadData()
+                
                 weakSelf!.dropDownHeader(true)
                 weakSelf!.dismissGroup()
             }
-            
             break
         case .up:
             dismissGroup()
