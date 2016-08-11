@@ -56,7 +56,7 @@ There is one thing we need to pay attention when we custom a camera, it's the im
 
 * Create an object of class `PMImagePickerController`, and just present it from your own view controller.
 * If you just have the data source before, you can set the data source of `PMImagePickerController`, so it can be fast because without read the photo album.
-* Confirm the protocol `PMImagePickerControllerDelegate`, and implement the delegate used.
+* Conform to protocol `PMImagePickerControllerDelegate`, and implement the delegate used.
 
 The PMImagePickerControllerDelegate
 
