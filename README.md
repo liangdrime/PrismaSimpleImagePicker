@@ -60,7 +60,7 @@ There is one thing we need to pay attention when we custom a camera, it's the im
 
 The PMImagePickerControllerDelegate
 
-```
+```swift
 @objc protocol PMImagePickerControllerDelegate: NSObjectProtocol {
     /**
      Call when tap `Use` button of the picker view controller
@@ -91,35 +91,35 @@ The PMImagePickerControllerDelegate
 
 <br>
 Create and use the iamge picker
+```swift
+// Create image picker
+@IBAction func selectPhoto(sender: AnyObject) {
+    let nav = PMImagePickerController.init()
+    nav.pmDelegate = self
+    nav.photoGroups = photoGroups
+    nav.photoAssets = photoAssets
+    weak var weakSelf = self
+    self.presentViewController(nav, animated: true) {
+        weakSelf!.session.stopRunning()
+    }
+}
 
-	// Create image picker
-	@IBAction func selectPhoto(sender: AnyObject) {
-        let nav = PMImagePickerController.init()
-        nav.pmDelegate = self
-        nav.photoGroups = photoGroups
-        nav.photoAssets = photoAssets
-        weak var weakSelf = self
-        self.presentViewController(nav, animated: true) {
-            weakSelf!.session.stopRunning()
-        }
-    }
-    
-    
-    // PMImagePickerControllerDelegate
-    func imagePickerController(picker: PMImagePickerController, didFinishPickingImage originalImage: UIImage, selectedRect: CGRect, zoomScale:CGFloat) {
-        // Do something with the original image
-        ...
-    }
-    
-    func imagePickerController(picker: PMImagePickerController, didFinishPickingImage image: UIImage) {
-        // Dow something with the cropped image
-        ...
-    }
-    
-    func imagePickerControllerDidCancel(picker: PMImagePickerController) {
-        session.startRunning()
-    }
 
+// PMImagePickerControllerDelegate
+func imagePickerController(picker: PMImagePickerController, didFinishPickingImage originalImage: UIImage, selectedRect: CGRect, zoomScale:CGFloat) {
+    // Do something with the original image
+    ...
+}
+    
+func imagePickerController(picker: PMImagePickerController, didFinishPickingImage image: UIImage) {
+    // Dow something with the cropped image
+    ...
+}
+
+func imagePickerControllerDidCancel(picker: PMImagePickerController) {
+    session.startRunning()
+}
+```
 
 <br>
 **Custom your own album kind**
