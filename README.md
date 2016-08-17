@@ -128,4 +128,7 @@ The default album is `Camera`、`Favorites`、`ScreenShots` and `User photos`, a
 
 If you want change the kind of album, you could change the parameters `PHAssetCollectionType` and `PHAssetCollectionSubtype` in function `class func photoLibrarys() -> [PHAssetCollection]`
 
+<br>
+# License
 
+PrismaSimpleImagePicker is available under the MIT license. See the LICENSE file for more info.
