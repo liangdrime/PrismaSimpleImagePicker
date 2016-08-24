@@ -28,7 +28,7 @@ class PNImageCaptureController: UIViewController, PMImagePickerControllerDelegat
     var isUsingFrontFacingCamera: Bool = false
     var currentFlashMode: AVCaptureFlashMode = .Off
     let screenSize = ScreenSize()
-    let orientationManger: FMDeviceOrientation = FMDeviceOrientation()
+    let orientationManger: PMDeviceOrientation = PMDeviceOrientation()
     
     
     override func viewDidLoad() {
@@ -144,7 +144,7 @@ class PNImageCaptureController: UIViewController, PMImagePickerControllerDelegat
         
         let stillImageConnection = stillImageOutPut?.connectionWithMediaType(AVMediaTypeVideo)
 //        let curDeviceOrientation = UIDevice.currentDevice().orientation
-//        let avCaptureOrientation = FMDeviceOrientation.avOrientationFromDeviceOrientation(curDeviceOrientation)
+//        let avCaptureOrientation = PMDeviceOrientation.avOrientationFromDeviceOrientation(curDeviceOrientation)
         let avCaptureOrientation = AVCaptureVideoOrientation(rawValue: UIDevice.currentDevice().orientation.rawValue)!
         if stillImageConnection!.supportsVideoOrientation {
             stillImageConnection!.videoOrientation = avCaptureOrientation
@@ -169,10 +169,6 @@ class PNImageCaptureController: UIViewController, PMImagePickerControllerDelegat
                 // Mirror the image
                 if self.isUsingFrontFacingCamera {
                     image = UIImage.init(CGImage: image.CGImage!, scale: image.scale, orientation: UIImageOrientation.UpMirrored)
-                    
-                    let imageV = UIImageView.init(frame: self.previewLayer!.bounds)
-                    imageV.image = image
-                    self.view.addSubview(imageV)
                 }
                 
                 // Save photo
@@ -183,13 +179,13 @@ class PNImageCaptureController: UIViewController, PMImagePickerControllerDelegat
                 
                 let library = ALAssetsLibrary()
                 if self.isUsingFrontFacingCamera {
-                    let attachments = CMCopyDictionaryOfAttachments(kCFAllocatorDefault,imageDataSampleBuffer,kCMAttachmentMode_ShouldPropagate)
-//                    let attachments = CMGetAttachment(imageDataSampleBuffer, kCGImagePropertyExifDictionary, nil)
-                    library.writeImageToSavedPhotosAlbum(image.CGImage!, metadata: attachments as? [NSObject:AnyObject] , completionBlock: { (url: NSURL!, error: NSError!) in
+                    library.writeImageToSavedPhotosAlbum(image.CGImage, orientation: ALAssetOrientation.UpMirrored, completionBlock: { (url: NSURL!, error: NSError!) in
                         
                     })
                 }else {
-                    library.writeImageToSavedPhotosAlbum(image.CGImage, orientation: ALAssetOrientation.UpMirrored, completionBlock: { (url: NSURL!, error: NSError!) in
+                    let attachments = CMCopyDictionaryOfAttachments(kCFAllocatorDefault,imageDataSampleBuffer,kCMAttachmentMode_ShouldPropagate)
+//                    let attachments = CMGetAttachment(imageDataSampleBuffer, kCGImagePropertyExifDictionary, nil)
+                    library.writeImageToSavedPhotosAlbum(image.CGImage!, metadata: attachments as? [NSObject:AnyObject] , completionBlock: { (url: NSURL!, error: NSError!) in
                         
                     })
                 }

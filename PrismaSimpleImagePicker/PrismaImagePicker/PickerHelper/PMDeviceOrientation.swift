@@ -1,5 +1,5 @@
 //
-//  FMDeviceOrientation.swift
+//  PMDeviceOrientation.swift
 //  PrismaSimpleImagePicker
 //
 //  Created by Roy lee on 16/7/29.
@@ -10,7 +10,7 @@ import UIKit
 import CoreMotion
 import AVFoundation
 
-class FMDeviceOrientation: NSObject {
+class PMDeviceOrientation: NSObject {
     
     var motionManager: CMMotionManager = CMMotionManager()
     

@@ -13,7 +13,7 @@
 		7D53D9F01D4F4F6500872658 /* PMImageGroupController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7D53D9D01D4F4F6500872658 /* PMImageGroupController.xib */; };
 		7D53D9F11D4F4F6500872658 /* PMImagePickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D53D9D11D4F4F6500872658 /* PMImagePickerController.swift */; };
 		7D53D9F31D4F4F6500872658 /* PMImageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7D53D9D31D4F4F6500872658 /* PMImageViewController.xib */; };
-		7D53D9F41D4F4F6500872658 /* FMDeviceOrientation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D53D9D51D4F4F6500872658 /* FMDeviceOrientation.swift */; };
+		7D53D9F41D4F4F6500872658 /* PMDeviceOrientation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D53D9D51D4F4F6500872658 /* PMDeviceOrientation.swift */; };
 		7D53D9F51D4F4F6500872658 /* PMImageManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D53D9D61D4F4F6500872658 /* PMImageManger.swift */; };
 		7D53D9F71D4F4F6500872658 /* PMImageGroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D53D9DA1D4F4F6500872658 /* PMImageGroupCell.swift */; };
 		7D53D9F81D4F4F6500872658 /* PMImageGroupCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7D53D9DB1D4F4F6500872658 /* PMImageGroupCell.xib */; };
@@ -64,7 +64,7 @@
 		7D53D9D01D4F4F6500872658 /* PMImageGroupController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PMImageGroupController.xib; sourceTree = "<group>"; };
 		7D53D9D11D4F4F6500872658 /* PMImagePickerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PMImagePickerController.swift; sourceTree = "<group>"; };
 		7D53D9D31D4F4F6500872658 /* PMImageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PMImageViewController.xib; sourceTree = "<group>"; };
-		7D53D9D51D4F4F6500872658 /* FMDeviceOrientation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FMDeviceOrientation.swift; sourceTree = "<group>"; };
+		7D53D9D51D4F4F6500872658 /* PMDeviceOrientation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PMDeviceOrientation.swift; sourceTree = "<group>"; };
 		7D53D9D61D4F4F6500872658 /* PMImageManger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PMImageManger.swift; sourceTree = "<group>"; };
 		7D53D9DA1D4F4F6500872658 /* PMImageGroupCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PMImageGroupCell.swift; sourceTree = "<group>"; };
 		7D53D9DB1D4F4F6500872658 /* PMImageGroupCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PMImageGroupCell.xib; sourceTree = "<group>"; };
@@ -159,7 +159,7 @@
 		7D53D9D41D4F4F6500872658 /* PickerHelper */ = {
 			isa = PBXGroup;
 			children = (
-				7D53D9D51D4F4F6500872658 /* FMDeviceOrientation.swift */,
+				7D53D9D51D4F4F6500872658 /* PMDeviceOrientation.swift */,
 				7D53D9D61D4F4F6500872658 /* PMImageManger.swift */,
 			);
 			path = PickerHelper;
@@ -382,7 +382,7 @@
 				7D53D9FB1D4F4F6500872658 /* PMPhotoHeaderView.swift in Sources */,
 				7D56B5E41D449BA1009224A5 /* ViewController.swift in Sources */,
 				7D0375661D54CFE400B39B7D /* PMImageCache.swift in Sources */,
-				7D53D9F41D4F4F6500872658 /* FMDeviceOrientation.swift in Sources */,
+				7D53D9F41D4F4F6500872658 /* PMDeviceOrientation.swift in Sources */,
 				7D53D9F71D4F4F6500872658 /* PMImageGroupCell.swift in Sources */,
 				7D53DA071D4F4F6500872658 /* PMCaptureButtom.swift in Sources */,
 				7D53D9F51D4F4F6500872658 /* PMImageManger.swift in Sources */,
