@@ -35,8 +35,8 @@ class PushAnimator: NSObject, UIViewControllerAnimatedTransitioning {
         let toViewController = transitionContext.viewControllerForKey(UITransitionContextToViewControllerKey)
         let containerView = transitionContext.containerView()
         
-        containerView?.addSubview(fromViewController!.view)
-        containerView?.addSubview(toViewController!.view)
+        containerView.addSubview(fromViewController!.view)
+        containerView.addSubview(toViewController!.view)
         toViewController?.view.frame = fromViewController!.view.bounds
         
         var fromFrame = fromViewController?.view.frame

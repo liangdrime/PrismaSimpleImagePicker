@@ -53,7 +53,7 @@ class PMImageDownloader: NSObject, NSURLSessionDelegate, NSURLSessionDataDelegat
         
         // Check disk
         weak var weakSelf = self
-        imageCache.queryImageFromCache(urlKey) { (image: UIImage?) in
+        imageCache.queryImageFromCache(urlKey!) { (image: UIImage?) in
             if let img: UIImage = image {
                 if let com: ((image: UIImage?, URL: NSURL?, error: NSError?)->Void) = completionHandler {
                     com(image: img, URL: url,  error: nil)
@@ -72,7 +72,7 @@ class PMImageDownloader: NSObject, NSURLSessionDelegate, NSURLSessionDataDelegat
                         if data?.length > 0 {
                             image = UIImage.init(data: data!)
                             // Stroe image
-                            weakSelf!.imageCache.storeImage(image!, forKey: urlKey)
+                            weakSelf!.imageCache.storeImage(image!, forKey: urlKey!)
                         }
                     }
                     
@@ -90,7 +90,7 @@ class PMImageDownloader: NSObject, NSURLSessionDelegate, NSURLSessionDataDelegat
     
     func pmDataTaskWithURL(url: NSURL, completionHandler: (NSData?, NSURL?, NSError?) -> Void) -> NSURLSessionDataTask {
         
-        if let delegate = taskDelegates[url.absoluteString] {
+        if let delegate = taskDelegates[url.absoluteString!] {
             delegate.completionHandler = completionHandler
             let task = delegate.task!
             return task
@@ -99,7 +99,7 @@ class PMImageDownloader: NSObject, NSURLSessionDelegate, NSURLSessionDataDelegat
         let task = self.session!.dataTaskWithURL(url)
         let delegate = PMSessionDelegate.init(completionHandler: completionHandler)
         delegate.task = task
-        taskDelegates[url.absoluteString] = delegate
+        taskDelegates[url.absoluteString!] = delegate
         
         return task
     }
@@ -140,7 +140,7 @@ extension UIImageView {
     
     func pm_setImageWithURL(URL: NSURL, completionHandler:((image: UIImage?, error: NSError?)->Void)?) {
         self.image = nil
-        currentUrl = URL.absoluteString
+        currentUrl = URL.absoluteString!
         let downloader = PMImageDownloader.sharedDownloader()
         downloader.downloadImage(URL) { (image: UIImage?, _URL: NSURL?, error: NSError?) in
             

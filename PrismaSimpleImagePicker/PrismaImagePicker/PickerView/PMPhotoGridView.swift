@@ -40,7 +40,7 @@ class PMPhotoGridView: UIView {
         let context = UIGraphicsGetCurrentContext()
         
         drawLine(context!, color: lineBgColor, width: lineBgWidth)
-        CGContextSaveGState(context)
+        CGContextSaveGState(context!)
         drawLine(context!, color: lineColor, width: lineWidth)
     }
     

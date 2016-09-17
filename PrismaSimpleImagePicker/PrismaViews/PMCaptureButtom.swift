@@ -168,17 +168,17 @@ class PMCaptureButtonContent: UIView {
         }
         
         let context = UIGraphicsGetCurrentContext()
-        CGContextSetStrokeColorWithColor(context, lineColor.CGColor)
-        CGContextSetLineWidth(context, lineWidth)
-        CGContextSetFillColorWithColor(context, fillColor.CGColor)
-        CGContextAddArc(context, centerX + centerOffset, centerY + centerOffset, radius, 0, CGFloat(M_PI) * 2, 0)
-        CGContextDrawPath(context, CGPathDrawingMode.FillStroke)
+        CGContextSetStrokeColorWithColor(context!, lineColor.CGColor)
+        CGContextSetLineWidth(context!, lineWidth)
+        CGContextSetFillColorWithColor(context!, fillColor.CGColor)
+        CGContextAddArc(context!, centerX + centerOffset, centerY + centerOffset, radius, 0, CGFloat(M_PI) * 2, 0)
+        CGContextDrawPath(context!, CGPathDrawingMode.FillStroke)
         
         if enabled == false {
-            CGContextSaveGState(context)
-            CGContextSetFillColorWithColor(context, enabledColor.CGColor)
-            CGContextAddArc(context, centerX + centerOffset, centerY + centerOffset, radius + lineWidth, 0, CGFloat(M_PI) * 2, 0)
-            CGContextDrawPath(context, CGPathDrawingMode.Fill)
+            CGContextSaveGState(context!)
+            CGContextSetFillColorWithColor(context!, enabledColor.CGColor)
+            CGContextAddArc(context!, centerX + centerOffset, centerY + centerOffset, radius + lineWidth, 0, CGFloat(M_PI) * 2, 0)
+            CGContextDrawPath(context!, CGPathDrawingMode.Fill)
         }
     }
     

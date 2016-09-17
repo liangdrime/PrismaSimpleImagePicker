@@ -317,9 +317,15 @@
 				TargetAttributes = {
 					7D56B5DD1D449BA1009224A5 = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = H4JK55MDDZ;
+						LastSwiftMigration = 0800;
+						ProvisioningStyle = Manual;
 					};
 					7D56B5F11D449BA1009224A5 = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = H4JK55MDDZ;
+						LastSwiftMigration = 0800;
+						ProvisioningStyle = Manual;
 						TestTargetID = 7D56B5DD1D449BA1009224A5;
 					};
 				};
@@ -528,11 +534,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEVELOPMENT_TEAM = H4JK55MDDZ;
 				INFOPLIST_FILE = PrismaSimpleImagePicker/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mengliang.PrismaSimpleImagePicker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "151301fb-4267-42ab-a0d8-f2cf60c6474c";
+				PROVISIONING_PROFILE_SPECIFIER = prismaprofile;
+				SWIFT_VERSION = 2.3;
 			};
 			name = Debug;
 		};
@@ -541,11 +551,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = H4JK55MDDZ;
 				INFOPLIST_FILE = PrismaSimpleImagePicker/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mengliang.PrismaSimpleImagePicker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "151301fb-4267-42ab-a0d8-f2cf60c6474c";
+				PROVISIONING_PROFILE_SPECIFIER = prismaprofile;
+				SWIFT_VERSION = 2.3;
 			};
 			name = Release;
 		};
@@ -553,10 +568,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = H4JK55MDDZ;
 				INFOPLIST_FILE = PrismaSimpleImagePickerTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = mengliang.PrismaSimpleImagePickerTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 2.3;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PrismaSimpleImagePicker.app/PrismaSimpleImagePicker";
 			};
 			name = Debug;
@@ -565,10 +582,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = H4JK55MDDZ;
 				INFOPLIST_FILE = PrismaSimpleImagePickerTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = mengliang.PrismaSimpleImagePickerTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 2.3;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PrismaSimpleImagePicker.app/PrismaSimpleImagePicker";
 			};
 			name = Release;

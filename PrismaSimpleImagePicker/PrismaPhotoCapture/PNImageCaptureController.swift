@@ -260,7 +260,7 @@ class PNImageCaptureController: UIViewController, PMImagePickerControllerDelegat
         showSquareBox(point)
         
         // Change focus
-        //        let pointInCamera = convertToPointOfInterestFromViewCoordinates(point)
+//        let pointInCamera = convertToPointOfInterestFromViewCoordinates(point)
         let pointInCamera = previewLayer!.captureDevicePointOfInterestForPoint(point)
         let device = deviceIntput?.device
         try! device!.lockForConfiguration()

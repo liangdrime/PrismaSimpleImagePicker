@@ -76,7 +76,7 @@ class PMImageManger: NSObject {
         let y = (originImage.size.height - height)/2
         
         let finalRect = CGRectMake(x, y, width, height)
-        let croppedImage = UIImage.init(CGImage: CGImageCreateWithImageInRect(originImage.CGImage, finalRect)!, scale: originImage.scale, orientation: originImage.imageOrientation)
+        let croppedImage = UIImage.init(CGImage: CGImageCreateWithImageInRect(originImage.CGImage!, finalRect)!, scale: originImage.scale, orientation: originImage.imageOrientation)
         
         return croppedImage
     }
@@ -84,7 +84,7 @@ class PMImageManger: NSObject {
     /// Crop the image to target rect
     class func cropImageToRect(originImage: UIImage, toRect: CGRect) -> UIImage {
         
-        let croppedImage = UIImage.init(CGImage: CGImageCreateWithImageInRect(originImage.CGImage, toRect)!, scale: originImage.scale, orientation: originImage.imageOrientation)
+        let croppedImage = UIImage.init(CGImage: CGImageCreateWithImageInRect(originImage.CGImage!, toRect)!, scale: originImage.scale, orientation: originImage.imageOrientation)
         
         return croppedImage
     }
@@ -224,16 +224,16 @@ extension UIImage {
     func imageWithColor(color: UIColor) -> UIImage {
         UIGraphicsBeginImageContextWithOptions(self.size, false, self.scale)
         let context = UIGraphicsGetCurrentContext()
-        CGContextTranslateCTM(context, 0, self.size.height)
-        CGContextScaleCTM(context, 1.0, -1.0)
-        CGContextSetBlendMode(context, CGBlendMode.Normal)
+        CGContextTranslateCTM(context!, 0, self.size.height)
+        CGContextScaleCTM(context!, 1.0, -1.0)
+        CGContextSetBlendMode(context!, CGBlendMode.Normal)
         let rect = CGRectMake(0, 0, self.size.width, self.size.height)
-        CGContextClipToMask(context, rect, self.CGImage)
+        CGContextClipToMask(context!, rect, self.CGImage!)
         color.setFill()
-        CGContextFillRect(context, rect)
+        CGContextFillRect(context!, rect)
         let newImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
-        return newImage
+        return newImage!
     }
     
     // Get a image with color & size
@@ -241,11 +241,11 @@ extension UIImage {
         let rect = CGRectMake(0, 0, size.width, size.height)
         UIGraphicsBeginImageContext(rect.size)
         let context = UIGraphicsGetCurrentContext()
-        CGContextSetFillColorWithColor(context, color.CGColor)
-        CGContextFillRect(context, rect)
+        CGContextSetFillColorWithColor(context!, color.CGColor)
+        CGContextFillRect(context!, rect)
         let image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
-        return image
+        return image!
     }
     
     /**
@@ -364,16 +364,16 @@ extension UIImage {
             break
         }
         
-        let ctx: CGContextRef = CGBitmapContextCreate(nil, Int(size.width), Int(size.height), CGImageGetBitsPerComponent(CGImage), 0, CGImageGetColorSpace(CGImage), CGImageAlphaInfo.PremultipliedLast.rawValue)!
+        let ctx: CGContextRef = CGBitmapContextCreate(nil, Int(size.width), Int(size.height), CGImageGetBitsPerComponent(CGImage!), 0, CGImageGetColorSpace(CGImage!)!, CGImageAlphaInfo.PremultipliedLast.rawValue)!
         
         CGContextConcatCTM(ctx, transform)
         
         switch imageOrientation {
         case UIImageOrientation.Left, UIImageOrientation.LeftMirrored, UIImageOrientation.Right, UIImageOrientation.RightMirrored:
-            CGContextDrawImage(ctx, CGRectMake(0, 0, size.height, size.width), CGImage)
+            CGContextDrawImage(ctx, CGRectMake(0, 0, size.height, size.width), CGImage!)
             break
         default:
-            CGContextDrawImage(ctx, CGRectMake(0, 0, size.width, size.height), CGImage)
+            CGContextDrawImage(ctx, CGRectMake(0, 0, size.width, size.height), CGImage!)
             break
         }
         
