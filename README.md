@@ -121,7 +121,6 @@ func imagePickerControllerDidCancel(picker: PMImagePickerController) {
 }
 ```
 
-<br>
 **Custom your own album kind**
 
 The default album is `Camera`、`Favorites`、`ScreenShots` and `User photos`, and all the operations of image is in `PMImageManger.swift`. 
